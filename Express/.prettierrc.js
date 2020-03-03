@@ -1,0 +1,3 @@
+module.exports = {
+  backtick: true,
+};

@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import Test from './components/Test/';
 import {
   SafeAreaView,
   StyleSheet,
@@ -40,6 +41,7 @@ const App: () => React$Node = () => {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
+              <Test />
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
