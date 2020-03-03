@@ -6,14 +6,12 @@ module.exports = {
 		'commonjs': true,
 		'jquery': true
 	},
+	'plugins':['prettier'],
 	'extends': 'eslint:recommended',
 	'globals': {
 		'Atomics': 'readonly',
 		'SharedArrayBuffer': 'readonly'
 	},
-	'plugins':'prettier',
-	
-
 	'parserOptions': {
 		'ecmaVersion': 2018,
 		'sourceType': 'module'
