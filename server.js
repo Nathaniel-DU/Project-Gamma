@@ -12,11 +12,15 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+<<<<<<< HEAD
 //Routes
 const userRouter = require(`./routes/api/authRouter`);
 const eventRouter = require(`./routes/api/eventRouter`);
 app.use(`/auth`, userRouter);
 app.use(`/event`, eventRouter);
+=======
+
+>>>>>>> Added mongoose initialization
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
