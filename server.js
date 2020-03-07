@@ -1,16 +1,37 @@
 /* eslint-disable no-console */
+require(`dotenv`).config();
 const express = require("express");
-const { join } = require("path");
+const mongoose = require(`mongoose`);
 const morgan = require("morgan");
+const path = require("path");
 const app = express();
 
-const port = process.env.SERVER_PORT || 3000;
+const PORT = process.env.SERVER_PORT || 3001;
 
 app.use(morgan("dev"));
-app.use(express.static(join(__dirname, "build")));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
-app.use((_, res) => {
-  res.sendFile(join(__dirname, "build", "index.html"));
+
+
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+}
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}).then(() => {
+  app.listen(PORT, () => {
+      console.log(`Listening on http://localhost:${PORT}/`);
+  });
+}).catch(err => {
+  if(err) throw err;
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+module.exports = app;
