@@ -1,0 +1,29 @@
+h2 {
+    color: white;
+    text-align: center;
+    /* margin-top: 200px; */
+}
+
+.start-button {
+    width: 50%;
+    margin-top: 50px;
+    display: block;
+    margin: auto;
+}
+
+h1 {
+    color: #ADEFD1FF;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 100px!important;
+    
+}
+
+.start-location {
+    margin-bottom: 200px;
+}
+
+.start-trip {
+    margin-top: 200px;
+}
+

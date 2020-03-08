@@ -9,6 +9,8 @@ import Home from "./views/Home";
 import Profile from "./views/Profile";
 import { useAuth0 } from "./react-auth0-spa";
 import history from "./utils/history";
+import StartLocation from "./views/StartLocation";
+import UpdateView from "./views/UpdateView";
 
 // styles
 import "./App.css";
@@ -31,6 +33,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/auth/create" exact component={FormPage}/>
+            <Route path="/home" component={StartLocation} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </Container>
