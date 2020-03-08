@@ -68,19 +68,26 @@ const UserSchema = new Schema({
         type: String,
         trim: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         required: true,
 >>>>>>> Added User model
+=======
+>>>>>>> Added routes for authentication
     },
     zipcode: {
         type: String,
         trim: true,
         required: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
         match: [/^[0-9]{5}(?:-[0-9]{4})?$/,'Please enter a valid zipcode']
 =======
         match: ["^[0-9]{5}(?:-[0-9]{4})?$",'Please enter a valid zipcode']
 >>>>>>> Added User model
+=======
+        match: [/^[0-9]{5}(?:-[0-9]{4})?$/,'Please enter a valid zipcode']
+>>>>>>> Added routes for authentication
     },
     country: {
         type: String,
@@ -101,10 +108,14 @@ const UserSchema = new Schema({
         type: Boolean,
         required: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
         default: false,
 =======
 
 >>>>>>> Added User model
+=======
+        default: false,
+>>>>>>> Added routes for authentication
     },
 
     dateCreated: {
@@ -141,10 +152,14 @@ UserSchema.methods.comparePassword = function(password) {
 
 UserSchema.hashPassword = function(password){
 <<<<<<< HEAD
+<<<<<<< HEAD
     return bcrypt.hashSync(password);
 =======
     return hashSync(password);
 >>>>>>> Added User model
+=======
+    return bcrypt.hashSync(password);
+>>>>>>> Added routes for authentication
 }
 
 const User = mongoose.model('User', UserSchema);
