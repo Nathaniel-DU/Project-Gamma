@@ -12,7 +12,9 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-
+//Routes
+const userRouter = require(`./routes/api/authRouter`);
+app.use(`/auth`, userRouter);
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
