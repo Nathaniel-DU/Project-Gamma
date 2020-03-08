@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
-
+import FormPage from "./views/FormPage";
 import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
@@ -30,6 +30,7 @@ const App = () => {
         <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Login} />
+            <Route path="/auth/create" exact component={FormPage}/>
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </Container>
