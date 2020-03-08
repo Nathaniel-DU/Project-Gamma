@@ -16,8 +16,9 @@ app.use(express.json());
 <<<<<<< HEAD
 //Routes
 const userRouter = require(`./routes/api/authRouter`);
-const eventRouter = require(`./routes/api/eventRouter`);
+// const eventRouter = require(`./routes/api/eventRouter`);
 app.use(`/auth`, userRouter);
+<<<<<<< HEAD
 app.use(`/event`, eventRouter);
 =======
 
@@ -27,6 +28,9 @@ app.use(`/event`, eventRouter);
 const userRouter = require(`./routes/api/authRouter`);
 app.use(`/auth`, userRouter);
 >>>>>>> Added routes for authentication
+=======
+// app.use(`/event`, eventRouter);
+>>>>>>> Added if-env to manage scripts
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
