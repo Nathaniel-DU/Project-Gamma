@@ -32,7 +32,9 @@
     "react-scripts": "^3.4.0",
     "reactstrap": "^8.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
