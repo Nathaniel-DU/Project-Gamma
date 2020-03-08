@@ -15,3 +15,10 @@
     margin: auto;
 }
 
+main {
+    height: 100%;
+}
+
+h1.header {
+    margin-top: 1.5rem;
+}

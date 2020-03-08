@@ -5,6 +5,7 @@ import FormPage from "./views/FormPage";
 import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
+import Login from "./views/Login";
 import Home from "./views/Home";
 import Profile from "./views/Profile";
 import { useAuth0 } from "./react-auth0-spa";
@@ -28,16 +29,14 @@ const App = () => {
 
   return (
     <Router history={history}>
-      <div id="app" className="d-flex flex-column h-100">
-        <Container className="flex-grow-1 mt-5">
+      {/* <div id="app" className="d-flex flex-column h-100"> */}
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/auth/create" exact component={FormPage}/>
             <Route path="/home" component={StartLocation} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
-        </Container>
-      </div>
+      {/* </div> */}
     </Router>
   );
 };
