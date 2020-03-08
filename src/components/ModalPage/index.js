@@ -25,7 +25,7 @@ render() {
       <MDBContainer>
         <StartLocationButton text="Stop Trip"></StartLocationButton>
         <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(1)}>Excuse Call</MDBBtn>
-        <MDBModal isOpen={this.state.modal1} toggle={this.toggle(14)} centered>
+        <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} centered>
           <MDBModalHeader toggle={this.toggle(1)}>Message Sent</MDBModalHeader>
           <MDBModalFooter>
             <MDBBtn className="dismiss-modal" onClick={this.toggle(1)}>Dismiss</MDBBtn>
@@ -35,21 +35,21 @@ render() {
         <MDBModal isOpen={this.state.modal2} toggle={this.toggle(2)} centered>
           <MDBModalHeader className="modal-header" toggle={this.toggle(2)}>Message sent</MDBModalHeader>
           <MDBModalFooter>
-          <MDBBtn className="dismiss-modal" onClick={this.toggle(1)}>Dismiss</MDBBtn>
+          <MDBBtn className="dismiss-modal" onClick={this.toggle(2)}>Dismiss</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
         <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(3)}>Request Emergency Assistance</MDBBtn>
         <MDBModal isOpen={this.state.modal3} toggle={this.toggle(3)} centered>
           <MDBModalHeader toggle={this.toggle(3)}>Message Sent</MDBModalHeader>
           <MDBModalFooter>
-          <MDBBtn className="dismiss-modal" onClick={this.toggle(1)}>Dismiss</MDBBtn>
+          <MDBBtn className="dismiss-modal" onClick={this.toggle(3)}>Dismiss</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
         <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(4)}>Update Location</MDBBtn>
         <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} centered>
           <MDBModalHeader toggle={this.toggle(4)}>Location Updated</MDBModalHeader>
           <MDBModalFooter>
-          <MDBBtn className="dismiss-modal" onClick={this.toggle(1)}>Dismiss</MDBBtn>
+          <MDBBtn className="dismiss-modal" onClick={this.toggle(4)}>Dismiss</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
       </MDBContainer>
