@@ -1,0 +1,22 @@
+.modal-btn {
+    background-color: #ADEFD1FF!important;
+    width: 50%;
+    border: black 1px solid;
+    padding: 10px;
+    border-radius: 15px;
+    margin: auto;
+    display: block;
+    color: black;
+}
+
+.dismiss-modal {
+    background-color: #ADEFD1FF!important;
+    padding: 10px;
+    border-radius: 15px;
+    
+}
+
+.modal-header {
+    color: #00203FFF;
+    
+}
