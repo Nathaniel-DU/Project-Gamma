@@ -1,16 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Header from '../../components/Header';
 import Button from '../../components/Button/';
 import Logo from '../../assets/logo.png'
 import './style.css';
 
-const Home = () => (
-  <Fragment>
-    <Header text='Welcome to StaySafe!' />
-      <img className='staysafe-logo' src={Logo}></img>
-      <a href="https://stay-safe.auth0.com/login?client=OmzFe7Noy1kudMac7iJ1vsluSVztsdUr"><Button text='Login' /></a>
-      <a href="/auth/create"><Button text='Sign Up' /></a>
-  </Fragment>
-);
+import { useAuth0 } from "../../react-auth0-spa";
+
+const Home = () => {
+  const {loginWithRedirect} = useAuth0();
+    return(
+      <Fragment>
+        <Header text='Welcome to StaySafe!' />
+          <img className='staysafe-logo' alt='StaySafe Logo' src={Logo}></img>
+          <button onClick={loginWithRedirect} className='mint-button'>Login</button>
+          <a href="/auth/create"><button className='mint-button'>Sign Up</button></a>
+      </Fragment>
+    )
+};
 
 export default Home;

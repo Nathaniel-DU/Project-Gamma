@@ -1,7 +1,9 @@
 .mint-button {
-    display: block;
-    margin: auto;
-    margin-top: 1rem;
+    width: 90%;
+    background-color: #ADEFD1FF;
+    border: black 1px solid;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .header {
@@ -12,3 +14,4 @@
     display: block;
     margin: auto;
 }
+
