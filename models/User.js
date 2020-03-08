@@ -67,13 +67,12 @@ const UserSchema = new Schema({
     addressLineTwo: {
         type: String,
         trim: true,
-        required: true,
     },
     zipcode: {
         type: String,
         trim: true,
         required: true,
-        match: ["^[0-9]{5}(?:-[0-9]{4})?$",'Please enter a valid zipcode']
+        match: [/^[0-9]{5}(?:-[0-9]{4})?$/,'Please enter a valid zipcode']
     },
     country: {
         type: String,
@@ -93,7 +92,7 @@ const UserSchema = new Schema({
     onEvent: {
         type: Boolean,
         required: true,
-
+        default: false,
     },
 
     dateCreated: {
@@ -129,7 +128,7 @@ UserSchema.methods.comparePassword = function(password) {
 };
 
 UserSchema.hashPassword = function(password){
-    return hashSync(password);
+    return bcrypt.hashSync(password);
 }
 
 const User = mongoose.model('User', UserSchema);
