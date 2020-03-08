@@ -1,4 +1,4 @@
 module.exports = {
-    actionRouter: "api/actionRouter",
+    eventRouter: "api/actionRouter",
     authRouter: "api/authRouter",
 }
