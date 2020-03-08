@@ -1,0 +1,17 @@
+.mint-button {
+    width: 90%;
+    background-color: #ADEFD1FF;
+    border: black 1px solid;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.header {
+    margin-bottom: 10rem;
+}
+
+.staysafe-logo {
+    display: block;
+    margin: auto;
+}
+

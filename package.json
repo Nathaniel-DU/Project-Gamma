@@ -1,9 +1,11 @@
 {
-  "name": "auth0-react-01-login",
+  "name": "staysafe",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "if-env NODE_ENV=production ?? npm run start:production || npm run start:dev",
+    "start:dev": "concurrently \"nodemon server.js\" \"react-scripts start\"",
+    "start:production": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -13,8 +15,16 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "cloudinary-react": "^1.3.2",
+    "concurrently": "^5.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "highlight.js": "^9.15.6",
+    "if-env": "^1.0.4",
+    "mdbreact": "^4.25.3",
+    "mongoose": "^5.9.3",
     "morgan": "^1.9.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -22,7 +32,9 @@
     "react-scripts": "^3.4.0",
     "reactstrap": "^8.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
