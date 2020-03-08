@@ -9,7 +9,7 @@ const Home = () => (
     <Header text='Welcome to StaySafe!' />
       <img className='staysafe-logo' src={Logo}></img>
       <a href="https://stay-safe.auth0.com/login?client=OmzFe7Noy1kudMac7iJ1vsluSVztsdUr"><Button text='Login' /></a>
-      <Button text='Sign Up' />
+      <a href="/auth/create"><Button text='Sign Up' /></a>
   </Fragment>
 );
 
