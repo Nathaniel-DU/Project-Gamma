@@ -8,8 +8,8 @@ const Home = () => (
   <Fragment>
     <Header text='Welcome to StaySafe!' />
       <img className='staysafe-logo' src={Logo}></img>
-      <Button text='Login' />
-      <Button text='SignUp' />
+      <a href="https://stay-safe.auth0.com/login?client=OmzFe7Noy1kudMac7iJ1vsluSVztsdUr"><Button text='Login' /></a>
+      <Button text='Sign Up' />
   </Fragment>
 );
 
