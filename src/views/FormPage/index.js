@@ -37,7 +37,7 @@ return (
         <input type="text" id="defaultFormContactNameEx" className="form-control" />
         <br />
         <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          Address(line two)
+          Address (line two)
         </label>
         <input type="text" id="defaultFormContactNameEx" className="form-control" />
         <br />
