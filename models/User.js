@@ -23,6 +23,27 @@ const UserSchema = new Schema({
         ]
     },
 
+    friendsList: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+
+    friendsPending: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+
+    friendsInvited: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+
     tenant: {
         type: String,
         required: true,
