@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import StartLocationButton from "../../components/StartLocationButton";
 import UpdateView from "../UpdateView";
+import Hamburger from '../../components/Hamburger';
 import Header from '../../components/Header';
 import './style.css';
 
@@ -43,7 +44,9 @@ export default class StartLocation extends Component {
   render() {
 
     return (
-
+      <div id="outer-container">
+      <Hamburger />
+      <main id="page-wrap">
       <Fragment>
 
         {!this.state.eventStarted &&
@@ -70,6 +73,8 @@ export default class StartLocation extends Component {
 
 
       </Fragment>
+      </main>
+      </div>
     )
   }
 }
