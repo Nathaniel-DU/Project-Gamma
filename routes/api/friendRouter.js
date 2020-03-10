@@ -23,9 +23,9 @@ friendRouter.route(`/invite/:friendid`)
                         sgMail.send({
                             to: invited.email,
                             from: `info@bknutson.com`,
-                            subject: `This is a test`,
-                            text: `localhost:3001/user/${invited._id}/friends/accept/${invitee._id}`,
-                            html: `localhost:3001/user/${invited._id}/friends/accept/${invitee._id}`
+                            subject: `${invitee.firstName} ${invitee.lastName} has invited you to StaySafe`,
+                            text: `Click this link to accept the friend request localhost:3001/user/${invited._id}/friends/accept/${invitee._id}`,
+                            html: `Click this link to accept the friend request localhost:3001/user/${invited._id}/friends/accept/${invitee._id}`
                         });
                     }
                 })
@@ -37,6 +37,23 @@ friendRouter.route(`/invite/:friendid`)
 
 
 //Remove
+friendRouter.route(`/remove/:friendid`)
+    .get((req, res, next) => {
+        db.User.findByIdAndUpdate(req.params.userid, {
+            $pull: {
+                friendsList: req.params.friendid
+            }
+        })
+        .then(() => {
+            db.User.findByIdAndUpdate(req.params.friendid, {
+                $pull: {
+                    friendsList: req.params.userid
+                }
+            })
+            .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+    })
 
 //Accept
 friendRouter.route(`/accept/:friendid`)
