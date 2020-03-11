@@ -1,79 +1,132 @@
-import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
+
+import React, { Component } from 'react';
 import "./style.css"
-import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+//import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
-const FormPage = () => {
-return (
-<MDBContainer>
-  <MDBRow>
-    <MDBCol md="6">
-      <form>
-        <p className="h4 text-center mb-4">Sign Up!</p>
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          First Name
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactEmailEx" className="grey-text">
-          Last Name
-        </label>
-        <input type="email" id="defaultFormContactEmailEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
-          Email
-        </label>
-        <input type="text" id="defaultFormContactSubjectEx" className="form-control" />
-        <br />
-        
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          Phone Number
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          Address (line one)
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          Address (line two)
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          Zip Code
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          Country
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          City
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <label htmlFor="defaultFormContactNameEx" className="grey-text">
-          State
-        </label>
-        <input type="text" id="defaultFormContactNameEx" className="form-control" />
-        <br />
-        <div className="text-center mt-4">
-          
-          
-                  <MDBBtn className="signUpbttn"outline type="submit">
-                    SignUp
-                    <MDBIcon far icon="paper-plane" className="ml-2" />
-                  </MDBBtn>
-                </div>
-              </form>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      );
+class FormPage extends Component {
+  render() {
+    return (
+      <Register/>
+      
+    );
+  }
+}
+const validPhoneRegex=RegExp(/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/i)
+const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
+const validateForm = (errors) => {
+  let valid = true;
+  Object.values(errors).forEach(
+    (val) => val.length > 0 && (valid = false)
+  );
+  return valid;
+}
+
+
+class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fullName: null,
+      email: null,
+      phoneNumber: null,
+      password: null,
+      errors: {
+        fullName: '',
+        email: '',
+        phoneNumber:'',
+        password: '',
+      }
     };
+  }
+  handleChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+    let errors = this.state.errors;
 
+    switch (name) {
+      case 'fullName': 
+        errors.fullName = 
+          value.length < 5
+            ? 'Full Name must be 5 characters long!'
+            : '';
+        break;
+      case 'email': 
+        errors.email = 
+          validEmailRegex.test(value)
+            ? ''
+            : 'Email is not valid!';
+        break;
+      case 'phoneNumber':
+        errors.phoneNumber=
+        validPhoneRegex.test(value)  
+        ? ''
+        : 'Must Be A Valid Phone Number';
+        break;
+      case 'password': 
+        errors.password = 
+          value.length < 8
+            ? 'Password must be 8 characters long!'
+            : '';
+        break;
+      default:
+        break;
+    }
+
+    this.setState({errors, [name]: value});
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if(validateForm(this.state.errors)) {
+      console.info('Valid Form')
+    }else{
+      console.error('Invalid Form')
+    }
+  }
+  render() {
+    const {errors} = this.state;
+    return (
+      <div className='wrapper'>
+        <div className='form-wrapper'>
+          <h2>Sign Up</h2>
+          <form onSubmit={this.handleSubmit} noValidate>
+            <div className='fullName'>
+              <label htmlFor="fullName">Full Name</label>
+              <input type='text' name='fullName' onChange={this.handleChange} noValidate />
+              {errors.fullName.length > 0 && 
+                <span className='error'>{errors.fullName}</span>}
+            </div>
+            <div className='email'>
+              <label htmlFor="email">Email</label>
+              <input type='email' name='email' onChange={this.handleChange} noValidate />
+              {errors.email.length > 0 && 
+                <span className='error'>{errors.email}</span>}
+            </div>
+            <div className='phoneNumber'>
+              <label htmlFor="phoneNumber">Phone Number</label>
+              <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} noValidate />
+              {errors.phoneNumber.length > 0 && 
+                <span className='error'>{errors.phoneNumber}</span>}
+            </div>
+            <div className='password'>
+              <label htmlFor="password">Password</label>
+              <input type='password' name='password' onChange={this.handleChange} noValidate />
+              {errors.password.length > 0 && 
+                <span className='error'>{errors.password}</span>}
+            </div>
+            <div className='info'>
+              <small>Password must be eight characters in length.</small>
+            </div>
+            <div className='submit'>
+              <button>Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+          
+          
+                 
     export default FormPage;
