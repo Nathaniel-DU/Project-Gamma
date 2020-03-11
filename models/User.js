@@ -23,6 +23,34 @@ const UserSchema = new Schema({
         ]
     },
 
+    friendsList: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+        }
+    ],
+
+    friendsPending: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+        }
+    ],
+
+    friendsInvited: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+        }
+    ],
+
+    locations: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Location"
+        }
+    ],
+
     tenant: {
         type: String,
         required: true,
@@ -59,37 +87,6 @@ const UserSchema = new Schema({
         type: String,
     },
 
-    addressLineOne: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    addressLineTwo: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    zipcode: {
-        type: String,
-        trim: true,
-        required: true,
-        match: [/^[0-9]{5}(?:-[0-9]{4})?$/,'Please enter a valid zipcode']
-    },
-    country: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    city: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    state: {
-        type: String,
-        trim: true,
-    },
-
     onEvent: {
         type: Boolean,
         required: true,
@@ -101,15 +98,7 @@ const UserSchema = new Schema({
         default: Date.now
     },
 
-    lastUpdated: {
-        type: Date
-    }
 });
-
-UserSchema.methods.lastUpdatedDate = function() {
-    this.lastUpdated = Date.now();
-    return this.lastUpdated;
-}
 
 UserSchema.pre(`save`, function(next) {
     if(!this.isModified(`password`)) return next();
@@ -124,13 +113,7 @@ UserSchema.pre(`save`, function(next) {
     });
 });
 
-UserSchema.methods.comparePassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-};
 
-UserSchema.hashPassword = function(password){
-    return bcrypt.hashSync(password);
-}
 
 const User = mongoose.model('User', UserSchema);
 

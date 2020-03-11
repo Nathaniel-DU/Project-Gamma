@@ -14,9 +14,11 @@ app.use(express.json());
 
 //Routes
 const authRouter = require(`./routes/api/authRouter`);
-// const eventRouter = require(`./routes/api/eventRouter`);
+const eventRouter = require(`./routes/api/eventRouter`);
+const userRouter = require(`./routes/api/userRouter`);
 app.use(`/auth`, authRouter);
-// app.use(`/event`, eventRouter);
+app.use(`/event`, eventRouter);
+app.use(`/user`, userRouter);
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
