@@ -44,6 +44,13 @@ const UserSchema = new Schema({
         }
     ],
 
+    locations: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Location"
+        }
+    ],
+
     tenant: {
         type: String,
         required: true,

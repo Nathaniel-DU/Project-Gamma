@@ -50,10 +50,20 @@ friendRouter.route(`/remove/:friendid`)
                     friendsList: req.params.userid
                 }
             })
-            .catch(err => console.log(err));
+            .then(() => {
+                res.status(200).send();
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(404).send();
+            });
         })
-        .catch(err => console.log(err));
-    })
+        .catch(err => {
+            console.log(err);
+            res.status(404).send();
+
+        });
+    });
 
 //Accept
 friendRouter.route(`/accept/:friendid`)
@@ -61,23 +71,48 @@ friendRouter.route(`/accept/:friendid`)
         db.User.findByIdAndUpdate(req.params.userid, {
             $push: {
                 friendsList: req.params.friendid
-            },
-            $pullAll: {
-                friendsInvited: [req.params.userid]
             }
         })
         .then(() => {
-            db.User.findByIdAndUpdate(req.params.friendid, {
-                $push: {
-                    friendsList: req.params.userid
-                },
-                $pullAll: {
-                    friendsPending: [req.params.friendid]
+            db.User.findByIdAndUpdate(req.params.userid, {
+                $pull: {
+                    friendsInvited: req.params.friendid
                 }
             })
-            .catch(err => console.log(err))
+            .then(() => {
+                db.User.findByIdAndUpdate(req.params.friendid, {
+                    $push: {
+                        friendsList: req.params.userid
+                    }
+                })
+                .then(() => {
+                    db.User.findByIdAndUpdate(req.params.friendid, {
+                        $pull: {
+                            friendsPending: req.params.userid
+                        }
+                    })
+                    .then(() => {
+                        res.status(200).send();
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.status(404).send();
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(404).send();
+                })
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(404).send();
+            })
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log(err);
+            res.status(404).send();
+        })
     });
 
 module.exports = friendRouter;
