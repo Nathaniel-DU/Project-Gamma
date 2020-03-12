@@ -1,0 +1,7 @@
+{
+    "environment": {
+        "review": {
+            "addons": ["mongolab"]
+        }
+    }
+}
