@@ -17,7 +17,7 @@ const UserSchema = new Schema({
         required: "Password is Required",
         validate: [
           function(input) {
-            return input.length >= 6;
+            return input.length >= 8;
           },
           "Password needs to be longer."
         ]
@@ -68,7 +68,8 @@ const UserSchema = new Schema({
 
     phoneNumber: {
         type: String,
-        required: true
+        required: true,
+        match: [/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/, 'Please enter a valid phone number']
     },
 
     firstName: {

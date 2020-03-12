@@ -5,7 +5,7 @@ const db = require(`../../models`);
 
 //Start
 eventRouter.route(`/start/:userid`)
-    .put((req, res, next) => {
+    .post((req, res, next) => {
         db.User.findByIdAndUpdate(req.params.userid,
             {
                 $set: {
@@ -14,7 +14,31 @@ eventRouter.route(`/start/:userid`)
             })
             .then(user => {
                 if(user){
-                    res.status(200).send();
+                    db.Location.create({
+                        locations: [`${req.body.lat},${req.body.long}`]
+                    })
+                    .then(event => {
+                        db.User.findByIdAndUpdate(req.params.userid, {
+                            $push: {
+                                locations: event._id
+                            }
+                        })
+                        .then((user) => {
+                            if(user){
+                                res.status(200).send();
+                            }else{
+                                res.status(404).send();
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res.status(404).send();
+                        });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.status(404).send();
+                    })
                 }else{
                     res.status(404).send();
                 }
@@ -118,6 +142,40 @@ eventRouter.route(`/ride/:userid`)
             });
     });
 
+
+//Update Location
+eventRouter.route(`/updatelocation/:userid`)
+    .put((req, res, next) => {
+        db.User.findById(req.params.userid)
+            .then(user => {
+                if(user){
+                    const lastLocation = user.locations[user.locations.length - 1];
+                    if(lastLocation){
+                        db.Location.findByIdAndUpdate(lastLocation, {
+                            $push: {
+                                locations: `${req.body.lat},${req.body.long}`
+                            }
+                        })
+                        .then(() => {
+                            res.status(200).send();
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res.status(404).send();
+                        })
+                    }else{
+                        res.status(404).send();
+                    }
+                }else{
+                    res.status(404).send();
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(404).send();
+            })
+    });
+
 //Stop
 eventRouter.route(`/stop/:userid`)
     .put((req, res, next) => {
@@ -129,7 +187,23 @@ eventRouter.route(`/stop/:userid`)
             })
             .then(user => {
                 if(user){
-                    res.status(200).send();
+                    const lastLocation = user.locations[user.locations.length - 1];
+                    if(lastLocation){
+                        db.Location.findByIdAndUpdate(lastLocation, {
+                            $set: {
+                                dateEnded: Date.now()
+                            }
+                        })
+                        .then(() => {
+                            res.status(200).send();
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res.status(404).send();
+                        })
+                    }else{
+                        res.status(404).send();
+                    }
                 }else{
                     res.status(404).send();
                 }
