@@ -94,7 +94,6 @@ class Register extends Component {
         phoneNumber: this.state.phoneNumber,
         password: this.state.password
       }
-      console.log(user);
       axios.post('https://staysafeapp.herokuapp.com/auth/signup', user)
       .then(res => {
         window.location = '/home';
@@ -157,4 +156,4 @@ class Register extends Component {
           
           
                  
-    export default FormPage;
+export default FormPage;
