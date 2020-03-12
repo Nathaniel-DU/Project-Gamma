@@ -13,7 +13,7 @@ class Hamburger extends React.Component {
         <div>
             <Menu pageWrapId={"page-wrap"} outerContainerId={ "outer-container" }>
                 {
-                  <Signout/>
+                  // <Signout/>
                 }
             </Menu>
         </div>
