@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "if-env NODE_ENV=production ?? npm run start:production || npm run start:dev",
+    "start": "if-env NODE_ENV=production && npm run start:production || npm run start:dev",
     "start:dev": "concurrently \"nodemon server.js\" \"react-scripts start\"",
     "start:production": "node server.js",
     "build": "react-scripts build",
@@ -53,5 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
