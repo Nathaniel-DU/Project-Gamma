@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import axios from 'axios';
 import "./style.css"
 //import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
@@ -26,12 +27,14 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullName: null,
+      firstName: null,
+      lastName: null,
       email: null,
       phoneNumber: null,
       password: null,
       errors: {
-        fullName: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phoneNumber:'',
         password: '',
@@ -44,10 +47,16 @@ class Register extends Component {
     let errors = this.state.errors;
 
     switch (name) {
-      case 'fullName': 
-        errors.fullName = 
-          value.length < 5
-            ? 'Full Name must be 5 characters long!'
+      case 'firstName': 
+        errors.firstName = 
+          value.length < 2
+            ? 'First Name must be 2 characters long!'
+            : '';
+        break;
+        case 'lastName': 
+        errors.lastName = 
+          value.length < 2
+            ? 'Last Name must be 2 characters long!'
             : '';
         break;
       case 'email': 
@@ -78,39 +87,58 @@ class Register extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if(validateForm(this.state.errors)) {
+      const user = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        phoneNumber: this.state.phoneNumber,
+        password: this.state.password
+      }
+      console.log(user);
+      axios.post('https://staysafeapp.herokuapp.com/auth/signup', user)
+      .then(res => {
+        window.location = '/home';
+      });
       console.info('Valid Form')
     }else{
       console.error('Invalid Form')
     }
   }
+
   render() {
     const {errors} = this.state;
     return (
       <div className='wrapper'>
         <div className='form-wrapper'>
           <h2>Sign Up</h2>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className='fullName'>
-              <label htmlFor="fullName">Full Name</label>
-              <input type='text' name='fullName' onChange={this.handleChange} noValidate />
-              {errors.fullName.length > 0 && 
-                <span className='error'>{errors.fullName}</span>}
+          <form onSubmit={this.handleSubmit}>
+            <div className='firstName'>
+              <label htmlFor="firstName">First Name</label>
+              <input type='text' name='firstName' onChange={this.handleChange} />
+              {errors.firstName.length > 0 && 
+                <span className='error'>{errors.firstName}</span>}
+            </div>
+            <div className='lastName'>
+              <label htmlFor="lastName">Last Name</label>
+              <input type='text' name='lastName' onChange={this.handleChange} />
+              {errors.lastName.length > 0 && 
+                <span className='error'>{errors.lastName}</span>}
             </div>
             <div className='email'>
               <label htmlFor="email">Email</label>
-              <input type='email' name='email' onChange={this.handleChange} noValidate />
+              <input type='email' name='email' onChange={this.handleChange} />
               {errors.email.length > 0 && 
                 <span className='error'>{errors.email}</span>}
             </div>
             <div className='phoneNumber'>
               <label htmlFor="phoneNumber">Phone Number</label>
-              <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} noValidate />
+              <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
               {errors.phoneNumber.length > 0 && 
                 <span className='error'>{errors.phoneNumber}</span>}
             </div>
             <div className='password'>
               <label htmlFor="password">Password</label>
-              <input type='password' name='password' onChange={this.handleChange} noValidate />
+              <input type='password' name='password' onChange={this.handleChange} />
               {errors.password.length > 0 && 
                 <span className='error'>{errors.password}</span>}
             </div>
