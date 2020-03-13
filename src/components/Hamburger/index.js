@@ -1,5 +1,6 @@
 import React from 'react';
 import { stack as Menu } from 'react-burger-menu'
+import Logout from '../Logout';
 import './style.css';
 import Friends from "../friends";
 
@@ -11,11 +12,14 @@ class Hamburger extends React.Component {
   render () {
     return (
         <div>
-            <Menu pageWrapId={"page-wrap"} outerContainerId={ "outer-container" }>
-                {
+          <Menu pageWrapId={"page-wrap"} outerContainerId={ "outer-container" }>
+              {
+                <div>
+                  <Logout/>
                   <Friends/>
-                }
-            </Menu>
+                </div>
+              }
+          </Menu>
         </div>
     );
   }
