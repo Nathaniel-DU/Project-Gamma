@@ -1,6 +1,5 @@
 import React from 'react';
 import { stack as Menu } from 'react-burger-menu'
-import Signout from '../Signout';
 import './style.css';
 
 class Hamburger extends React.Component {
@@ -13,7 +12,7 @@ class Hamburger extends React.Component {
         <div>
             <Menu pageWrapId={"page-wrap"} outerContainerId={ "outer-container" }>
                 {
-                  // <Signout/>
+                  
                 }
             </Menu>
         </div>
