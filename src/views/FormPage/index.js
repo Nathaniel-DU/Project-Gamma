@@ -96,6 +96,7 @@ class Register extends Component {
       }
       console.log(user);
       axios.post(`/auth/signup`, user)
+
       .then(res => {
         window.location = '/home';
       });
@@ -157,4 +158,4 @@ class Register extends Component {
           
           
                  
-    export default FormPage;
+export default FormPage;
