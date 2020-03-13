@@ -4,9 +4,9 @@ const eventRouter = require(`express`).Router();
 const db = require(`../../models`);
 
 //Start
-eventRouter.route(`/start/:userid`)
+eventRouter.route(`/start`)
     .post((req, res, next) => {
-        db.User.findByIdAndUpdate(req.params.userid,
+        db.User.findByIdAndUpdate(req.user._id,
             {
                 $set: {
                     onEvent: true
@@ -18,7 +18,7 @@ eventRouter.route(`/start/:userid`)
                         locations: [`${req.body.lat},${req.body.long}`]
                     })
                     .then(event => {
-                        db.User.findByIdAndUpdate(req.params.userid, {
+                        db.User.findByIdAndUpdate(req.user._id, {
                             $push: {
                                 locations: event._id
                             }
@@ -50,9 +50,9 @@ eventRouter.route(`/start/:userid`)
     });
 
 //Excuse
-eventRouter.route(`/excuse/:userid`)
+eventRouter.route(`/excuse`)
     .get((req, res, next) => {
-        db.User.findById(req.params.userid)
+        db.User.findById(req.user._id)
             .then(user => {
                 if(user){
                     user.friendsList.forEach(friendid => {
@@ -81,9 +81,9 @@ eventRouter.route(`/excuse/:userid`)
     });
 
 // emergency services
-eventRouter.route(`/emergency/:userid`)
+eventRouter.route(`/emergency`)
     .get(( req, res, next) => {
-        db.User.findById(req.params.userid)
+        db.User.findById(req.user._id)
             .then(user => {
                 if(user){
                     user.friendsList.forEach(friendid => {
@@ -112,9 +112,9 @@ eventRouter.route(`/emergency/:userid`)
     });
 
 // request ride
-eventRouter.route(`/ride/:userid`)
+eventRouter.route(`/ride`)
     .get(( req, res, next) => {
-        db.User.findById(req.params.userid)
+        db.User.findById(req.user._id)
             .then(user => {
                 if(user){
                     user.friendsList.forEach(friendid => {
@@ -144,9 +144,9 @@ eventRouter.route(`/ride/:userid`)
 
 
 //Update Location
-eventRouter.route(`/updatelocation/:userid`)
+eventRouter.route(`/updatelocation`)
     .put((req, res, next) => {
-        db.User.findById(req.params.userid)
+        db.User.findById(req.user._id)
             .then(user => {
                 if(user){
                     const lastLocation = user.locations[user.locations.length - 1];
@@ -177,9 +177,9 @@ eventRouter.route(`/updatelocation/:userid`)
     });
 
 //Stop
-eventRouter.route(`/stop/:userid`)
+eventRouter.route(`/stop/`)
     .put((req, res, next) => {
-        db.User.findByIdAndUpdate(req.params.userid,
+        db.User.findByIdAndUpdate(req.user._id,
             {
                 $set: {
                     onEvent: false
