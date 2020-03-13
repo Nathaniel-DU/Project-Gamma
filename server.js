@@ -12,11 +12,12 @@ const PORT = process.env.PORT || 3001;
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended:true}));
-app.use(express.json());
 app.use(require(`express-session`)({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(express.json());
+app.disable('etag');
 
 
 
