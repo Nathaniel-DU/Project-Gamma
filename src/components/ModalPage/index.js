@@ -3,6 +3,7 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 import './style.css';
 import StartLocation from "../../views/StartLocation";
 import StartLocationButton from '../StartLocationButton';
+import getUserId from '../../utils/getUserId';
 
 class ModalPage extends Component {
   
@@ -19,6 +20,8 @@ toggle = nr => () => {
     [modalNumber]: !this.state[modalNumber]
   });
 }
+
+
 
 render() {
   return (

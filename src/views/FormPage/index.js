@@ -95,7 +95,7 @@ class Register extends Component {
         password: this.state.password
       }
       console.log(user);
-      axios.post('https://staysafeapp.herokuapp.com/auth/signup', user)
+      axios.post(`/auth/signup`, user)
       .then(res => {
         window.location = '/home';
       });
