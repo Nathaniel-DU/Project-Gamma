@@ -4,6 +4,7 @@ import UpdateView from "../UpdateView";
 import Hamburger from '../../components/Hamburger';
 import Header from '../../components/Header';
 import './style.css';
+import axios from 'axios';
 
 export default class StartLocation extends Component {
 
@@ -29,6 +30,13 @@ export default class StartLocation extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         })
+        axios.post('/event/start', {
+          lat: this.state.latitude,
+          long: this.state.longitude,
+        })
+        .then(res => {
+          console.log(res)
+        }).catch(err => console.log(err));
       }, (error) => {
         this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
       });
@@ -39,8 +47,6 @@ export default class StartLocation extends Component {
     this.setState({ eventStarted: true });
   }
 
-
-
   render() {
 
     return (
@@ -48,30 +54,19 @@ export default class StartLocation extends Component {
       <Hamburger />
       <main id="page-wrap">
       <Fragment>
-
         {!this.state.eventStarted &&
         <div>
           <h1>StaySafe</h1>
           <div className="start-location">
-            
-
             <div className="container start-trip"><h2>Click to begin trip.</h2></div>
-              
-
               <StartLocationButton
                 text='Start'
                 getMyLocation={this.getMyLocation}
                 startTrip={this.startTrip} />
             </div>
             </div>
-          
         }
         {this.state.eventStarted && <UpdateView />}
-
-        <p style={{ color: "white" }}>{this.state.latitude}</p>
-        <p style={{ color: "white" }}>{this.state.longitude} </p>
-
-
       </Fragment>
       </main>
       </div>
