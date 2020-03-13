@@ -3,7 +3,6 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 import './style.css';
 import StartLocation from "../../views/StartLocation";
 import StartLocationButton from '../StartLocationButton';
-import getUserId from '../../utils/getUserId';
 import axios from 'axios';
 
 class ModalPage extends Component {
