@@ -2,7 +2,6 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
 import FormPage from "./views/FormPage";
-import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Home from "./views/Home";
