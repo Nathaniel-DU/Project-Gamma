@@ -28,7 +28,13 @@ authRouter.route(`/isauthenticated`)
         }else{
             res.send(false);
         }
-    })
+    });
+
+authRouter.route(`/logout`)
+    .get((req, res, next) => {
+        req.logout();
+        res.redirect(`/`);
+    });
 
 
 
