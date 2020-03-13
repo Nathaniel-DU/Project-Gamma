@@ -1,6 +1,7 @@
 import React from 'react';
 import { stack as Menu } from 'react-burger-menu'
 import './style.css';
+import Friends from "../friends";
 
 class Hamburger extends React.Component {
   showSettings (event) {
@@ -12,7 +13,7 @@ class Hamburger extends React.Component {
         <div>
             <Menu pageWrapId={"page-wrap"} outerContainerId={ "outer-container" }>
                 {
-                  
+                  <Friends/>
                 }
             </Menu>
         </div>
