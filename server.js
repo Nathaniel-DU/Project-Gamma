@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require(`mongoose`);
 const morgan = require("morgan");
 const path = require(`path`);
+const passport = require(`passport`);
+const flash = require(`connect-flash`);
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -11,6 +13,11 @@ const PORT = process.env.PORT || 3001;
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(require(`express-session`)({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 
 
 //Routes

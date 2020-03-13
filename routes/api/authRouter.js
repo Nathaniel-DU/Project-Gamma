@@ -1,13 +1,10 @@
 const authRouter = require(`express`).Router();
 const db = require(`../../models`);
+const passport = require(`../../middleware/passport`);
 
 authRouter.route(`/signup`)
     .post((req, res, next) => {
-        const user = {
-            ...req.body, 
-            client_id: process.env.AUTH0_CLIENT_ID,
-            connection: process.env.AUTH0_DBCONNECTION,
-            tenant: process.env.AUTH0_TENANT};
+        const user = {...req.body}
         db.User.create(user).then(() => {
             res.status(200).end();
         }).catch(err => {
@@ -16,4 +13,24 @@ authRouter.route(`/signup`)
         });
 });
 
+authRouter.route(`/login`)
+    .post(passport.authenticate(`local`, {
+    failureRedirect: `/auth/login`,
+    failureFlash: `true`
+}), (req, res, next) => {
+    res.redirect(`/`);
+});
+
+authRouter.route(`/isauthenticated`)
+    .get((req, res, next) => {
+        if(req.user) {
+            res.send(true); 
+        }else{
+            res.send(false);
+        }
+    })
+
+
+
 module.exports = authRouter;
+

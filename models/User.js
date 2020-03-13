@@ -51,20 +51,6 @@ const UserSchema = new Schema({
         }
     ],
 
-    tenant: {
-        type: String,
-        required: true,
-    },
-
-    client_id: {
-        type: String,
-        required: true,
-    },
-
-    connection: {
-        type: String,
-        required: true,
-    },
 
     phoneNumber: {
         type: String,
@@ -113,6 +99,10 @@ UserSchema.pre(`save`, function(next) {
         });
     });
 });
+
+UserSchema.methods.comparePassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
 
 
 

@@ -6,11 +6,11 @@ import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Home from "./views/Home";
-import Profile from "./views/Profile";
-import { useAuth0 } from "./react-auth0-spa";
 import history from "./utils/history";
 import StartLocation from "./views/StartLocation";
 import UpdateView from "./views/UpdateView";
+import Login from "./views/LoginPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // styles
 import "./App.css";
@@ -20,11 +20,7 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { loading } = useAuth0();
 
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <Router history={history}>
@@ -32,8 +28,8 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/auth/create" exact component={FormPage}/>
-          <PrivateRoute path="/home" component={StartLocation} />
-          <PrivateRoute path="/profile" component={Profile} />
+          <Route path="/home" component={StartLocation} />
+          <Route path="/auth/login" exact component={Login}/>
         </Switch>
       </div>
     </Router>
