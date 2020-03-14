@@ -18,6 +18,8 @@ class Hamburger extends React.Component {
                 <div>
                   <Logout/>
                   <FriendSearch />
+                  <h4>Friends:</h4>
+                  <hr/>
                   <Friends/>
                 </div>
               }

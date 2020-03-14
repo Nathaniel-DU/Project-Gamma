@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './style.css';
 
 export default class Logout extends Component {
 
@@ -10,7 +11,7 @@ export default class Logout extends Component {
     render(){
         return(
             <div>
-                <Link to="/"><button onClick={this.logOut}>Logout</button></Link>
+                <Link to="/"><button className='blue-button' id='logout-button' onClick={this.logOut}>Logout</button></Link>
             </div>
         )
     }

@@ -16,7 +16,6 @@ export default class Friends extends Component {
     render() {
         return (
             <div>
-
                 {this.state.friends.map((friend, i) => <SingleFriend key={i + '-friendlist'} name={friend.name} location={friend.location} />)}
             </div>
         )

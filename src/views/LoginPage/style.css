@@ -86,7 +86,7 @@ p, div {
   }
   
   button {
-    min-width: 100%;
+    min-width: 90%;
     cursor: pointer;
     margin-right: 0.25em;
     margin-top: 0.5em;
@@ -94,7 +94,7 @@ p, div {
     border: none;
     border-radius: 4px;
     background-color: #ADEFD1FF;
-    color: #fefefe;
+    color: #000000;
   }
   button:hover {
     background-color: #4A4E69;
@@ -125,7 +125,7 @@ p, div {
   }
   
   .submit {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
   }

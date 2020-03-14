@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import './style.css';
 import StartLocation from "../../views/StartLocation";
@@ -61,6 +62,7 @@ toggleOff = nr => () => {
 
     this.getMyLocation = this.getMyLocation.bind(this);
     this.startTrip = this.startTrip.bind(this);
+    this.stopTrip = this.stopTrip.bind(this);
   }
 
   getMyLocation() {
@@ -91,13 +93,18 @@ toggleOff = nr => () => {
     this.setState({ eventStarted: true });
   }
 
+  stopTrip(){
+    fetch(`/event/stop`);
+    window.location.reload();
+  }
+
  
 
 
 render() {
   return (
       <MDBContainer>
-        <StartLocationButton text="Stop Trip"></StartLocationButton>
+        <MDBBtn className="modal-btn" onClick={this.stopTrip}>Stop Trip</MDBBtn>
         <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(1)}>Excuse Call</MDBBtn>
         <MDBModal isOpen={this.state.modal1} toggle={this.toggleOff(1)} centered>
           <MDBModalHeader toggle={this.toggleOff(1)}>Message Sent</MDBModalHeader>
