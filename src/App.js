@@ -20,14 +20,13 @@ initFontAwesome();
 
 const App = () => {
 
-
   return (
     <Router history={history}>
       <div id="app" className="d-flex flex-column h-100">
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/auth/create" exact component={FormPage}/>
-          <Route path="/home" component={StartLocation} />
+          <ProtectedRoute path="/home" component={StartLocation} />
           <Route path="/auth/login" exact component={Login}/>
         </Switch>
       </div>

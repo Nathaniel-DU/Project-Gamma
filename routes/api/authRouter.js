@@ -24,9 +24,9 @@ authRouter.route(`/login`)
 authRouter.route(`/isauthenticated`)
     .get((req, res, next) => {
         if(req.user) {
-            res.send(true); 
+            res.status(200).send(); 
         }else{
-            res.send(false);
+            res.status(401).send();
         }
     });
 
