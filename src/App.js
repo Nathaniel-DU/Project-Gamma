@@ -3,7 +3,6 @@ import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
 import FormPage from "./views/FormPage";
 import Loading from "./components/Loading";
-import NavBar from "./components/NavBar";
 import Home from "./views/Home";
 import history from "./utils/history";
 import StartLocation from "./views/StartLocation";
