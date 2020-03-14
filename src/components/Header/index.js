@@ -3,6 +3,6 @@ import './style.css'
 
 export default function Header({text}) {
     return (
-        <h1 className='header'>{text}</h1>
+        <h1 id='main-header' className='header'>{text}</h1>
     );
 };

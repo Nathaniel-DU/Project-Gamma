@@ -60,6 +60,7 @@ class FriendSearch extends React.Component {
       return (
         <div>
             <form onSubmit={this.handleSubmit}>
+                <h4>Add Friend:</h4>
                 <label htmlFor="search-friend"></label>
                 <input id='search-friend' name='email' type="text" onChange={this.handleChange}/>
                 {this.state.errors.email.length > 0 && 

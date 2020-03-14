@@ -16,6 +16,8 @@ h1 {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 100px!important;
+    padding-right: 30px;
+    padding-top: 25px;
     
 }
 

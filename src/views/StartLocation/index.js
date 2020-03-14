@@ -49,24 +49,24 @@ export default class StartLocation extends Component {
 
     return (
       <div id="outer-container">
-      <Hamburger />
-      <main id="page-wrap">
-      <Fragment>
-        {!this.state.eventStarted &&
-        <div>
-          <h1>StaySafe</h1>
-          <div className="start-location">
-            <div className="container start-trip"><h2>Click to begin trip.</h2></div>
-              <StartLocationButton
-                text='Start'
-                getMyLocation={this.getMyLocation}
-                startTrip={this.startTrip} />
-            </div>
-            </div>
-        }
-        {this.state.eventStarted && <UpdateView />}
-      </Fragment>
-      </main>
+        <Hamburger />
+        <main id="page-wrap">
+          <Fragment>
+            {!this.state.eventStarted &&
+            <div>
+              <h1>StaySafe</h1>
+              <div className="start-location">
+                <div className="container start-trip"><h2>Click to begin trip.</h2></div>
+                  <StartLocationButton
+                    text='Start'
+                    getMyLocation={this.getMyLocation}
+                    startTrip={this.startTrip} />
+                </div>
+                </div>
+            }
+            {this.state.eventStarted && <UpdateView />}
+          </Fragment>
+        </main>
       </div>
     )
   }
