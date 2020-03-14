@@ -20,25 +20,17 @@ toggle = nr => () => {
     case 'modal1':
       this.getMyLocation();
       axios.get('/event/excuse')
-        .then(res => {
-          console.log(res);
-        })
         .catch(err => console.log(err));
       break;
     case 'modal2': 
         this.getMyLocation();
         axios.get('/event/ride')
-        .then(res => {
-          console.log(res);
-        })
         .catch(err => console.log(err));
         break;
     case 'modal3':
       this.getMyLocation();
       axios.get('/event/emergency')
-      .then(res => {
-        console.log(res)
-      }).catch(err => console.log(err));
+      .catch(err => console.log(err));
       break;
     case 'modal4': 
     this.getMyLocation();
@@ -86,11 +78,7 @@ toggleOff = nr => () => {
           lat: this.state.latitude,
           long: this.state.longitude,
         })
-        .then(res => {
-          console.log(res)
-        }).catch(err => console.log(err));
-        // console.log(this.state.latitude)
-        // console.log(this.state.longitude)
+        .catch(err => console.log(err));
       }, (error) => {
         this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
       });

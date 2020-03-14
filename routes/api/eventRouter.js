@@ -64,7 +64,6 @@ eventRouter.route(`/excuse`)
                                     from: `+17205134524`
                                 })
                                 .then(message => {
-                                    console.log(message.sid);
                                     res.status(200).send();
                                 })
                                 .catch(err => console.log(err))
@@ -95,7 +94,6 @@ eventRouter.route(`/emergency`)
                                     from: `+17205134524`
                                 })
                                 .then(message => {
-                                    console.log(message.sid);
                                     res.status(200).send();
                                 })
                                 .catch(err => console.log(err))
@@ -126,7 +124,6 @@ eventRouter.route(`/ride`)
                                     from: `+17205134524`
                                 })
                                 .then(message => {
-                                    console.log(message.sid);
                                     res.status(200).send();
                                 })
                                 .catch(err => console.log(err))

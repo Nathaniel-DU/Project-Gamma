@@ -40,7 +40,6 @@ class Register extends Component {
         email: this.state.email,
         password: this.state.password
       }
-      console.log(user);
       axios.post(`/auth/login`, user)
       .then(res => {
         window.location = '/home';
