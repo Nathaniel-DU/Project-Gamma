@@ -24,8 +24,8 @@ friendRouter.route(`/invite/:friendid`)
                             to: invited.email,
                             from: `info@bknutson.com`,
                             subject: `${invitee.firstName} ${invitee.lastName} has invited you to StaySafe`,
-                            text: `Click this link to accept the friend request localhost:3001/user/${invited._id}/friends/accept/${invitee._id}`,
-                            html: `Click this link to accept the friend request localhost:3001/user/${invited._id}/friends/accept/${invitee._id}`
+                            text: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`,
+                            html: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`
                         });
                     }
                 })
