@@ -34,9 +34,7 @@ export default class StartLocation extends Component {
           lat: this.state.latitude,
           long: this.state.longitude,
         })
-        .then(res => {
-          console.log(res)
-        }).catch(err => console.log(err));
+        .catch(err => console.log(err));
       }, (error) => {
         this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
       });

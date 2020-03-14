@@ -10,7 +10,6 @@ class ProtectedRoute extends Component {
 
     componentDidMount(){
         const authenticated = isAuthenticated();
-        console.log(authenticated);
     }
 
     render() {

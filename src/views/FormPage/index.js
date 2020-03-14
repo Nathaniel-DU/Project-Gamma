@@ -94,7 +94,6 @@ class Register extends Component {
         phoneNumber: this.state.phoneNumber,
         password: this.state.password
       }
-      console.log(user);
       axios.post(`/auth/signup`, user)
 
       .then(res => {

@@ -3,6 +3,7 @@ import { stack as Menu } from 'react-burger-menu'
 import Logout from '../Logout';
 import './style.css';
 import Friends from "../friends";
+import FriendSearch from "../FriendSearch";
 
 class Hamburger extends React.Component {
   showSettings (event) {
@@ -16,6 +17,7 @@ class Hamburger extends React.Component {
               {
                 <div>
                   <Logout/>
+                  <FriendSearch />
                   <Friends/>
                 </div>
               }
