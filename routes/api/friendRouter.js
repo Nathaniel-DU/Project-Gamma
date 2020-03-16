@@ -7,14 +7,14 @@ sgMail.setApiKey(process.env.SENDGRID_API);
 friendRouter.route(`/invite/:friendid`)
     .get((req, res, next) => {
         db.User.findByIdAndUpdate(req.params.userid, {
-            $push: {
+            $addToSet: {
                 friendsPending: req.params.friendid
             }
         })
         .then(invitee => {
             if(invitee){
                 db.User.findByIdAndUpdate(req.params.friendid, {
-                    $push: {
+                    $addToSet: {
                         friendsInvited: req.params.userid
                     }
                 })
@@ -69,7 +69,7 @@ friendRouter.route(`/remove/:friendid`)
 friendRouter.route(`/accept/:friendid`)
     .get((req, res, next) => {
         db.User.findByIdAndUpdate(req.params.userid, {
-            $push: {
+            $addToSet: {
                 friendsList: req.params.friendid
             }
         })
@@ -81,7 +81,7 @@ friendRouter.route(`/accept/:friendid`)
             })
             .then(() => {
                 db.User.findByIdAndUpdate(req.params.friendid, {
-                    $push: {
+                    $addToSet: {
                         friendsList: req.params.userid
                     }
                 })
