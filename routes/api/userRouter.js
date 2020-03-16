@@ -77,14 +77,14 @@ userRouter.route('/friendinvite')
                 .then(user => {
                     if(user) {
                         db.User.findByIdAndUpdate(req.user._id, {
-                            $push: {
+                            $addToSet: {
                                 friendsPending: user._id
                             }
                         })
                         .then(invitee => {
                             if(invitee){
                                 db.User.findByIdAndUpdate(user._id, {
-                                    $push: {
+                                    $addToSet: {
                                         friendsInvited: req.user._id
                                     }
                                 })
