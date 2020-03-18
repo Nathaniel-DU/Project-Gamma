@@ -106,7 +106,7 @@ toggleOff = nr => () => {
 render() {
   return (
       <MDBContainer>
-        <MDBBtn className="modal-btn" onClick={this.stopTrip}><FontAwesomeIcon className="fa-icon" icon={faStopCircle} />Stop Trip</MDBBtn>
+        <MDBBtn className="modal-btn" color="primary" onClick={this.stopTrip}><FontAwesomeIcon className="fa-icon" icon={faStopCircle} />Stop Trip</MDBBtn>
         <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(1)}><FontAwesomeIcon className="fa-icon" icon={faPhoneVolume} />Excuse Call</MDBBtn>
         <MDBModal isOpen={this.state.modal1} toggle={this.toggleOff(1)} centered>
           <MDBModalHeader toggle={this.toggleOff(1)}>Message Sent</MDBModalHeader>
