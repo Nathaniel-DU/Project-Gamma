@@ -1,12 +1,14 @@
 p,label {
     color: #ADEFD1FF;
+    font-family: 'Sen', sans-serif;
 }
 
 .signUpbttn{
     background-color: #ADEFD1FF;
+    font-family: 'Sen', sans-serif;
 }
 p, div {
-    font-family: Lato;
+  font-family: 'Sen', sans-serif;
   }
   
   /* 
@@ -47,7 +49,7 @@ p, div {
   .form-wrapper > h2 {
     display: flex;
     justify-content: center;
-    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Sen', sans-serif;
     font-size: 2em;
     font-weight: lighter;
     margin-top: 0.25em;
@@ -83,6 +85,7 @@ p, div {
     font-size: 1.2em;
     font-weight: lighter;
     color: #bbb;
+    font-family: 'Sen', sans-serif;
   }
   
   button {
@@ -95,6 +98,7 @@ p, div {
     border-radius: 4px;
     background-color: #ADEFD1FF;
     color: #000000;
+    font-family: 'Sen', sans-serif;
   }
   button:hover {
     background-color: #4A4E69;
@@ -128,4 +132,5 @@ p, div {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
+    font-family: 'Sen', sans-serif;
   }

@@ -1,6 +1,7 @@
 h2 {
     color: white;
     text-align: center;
+    font-family: 'Sen', sans-serif;
     /* margin-top: 200px; */
 }
 
@@ -9,6 +10,7 @@ h2 {
     margin-top: 50px;
     display: block;
     margin: auto;
+    font-family: 'Sen', sans-serif;
 }
 
 h1 {
@@ -18,7 +20,7 @@ h1 {
     margin-bottom: 100px!important;
     padding-right: 30px;
     padding-top: 25px;
-    
+    font-family: 'Sen', sans-serif;
 }
 
 .start-location {
