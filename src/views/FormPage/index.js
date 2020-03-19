@@ -143,11 +143,11 @@ class Register extends Component {
                 <span className='error'>{errors.password}</span>}
             </div>
             <div className='info'>
-              <small>Password must be eight characters in length.</small>
+              <small>Password must be at least eight characters in length.</small>
             </div>
-            <div className='submit'>
-              <button>Sign Up</button>
-            </div>
+            
+              <button className="sign-up-button">Sign Up</button>
+          
           </form>
         </div>
       </div>

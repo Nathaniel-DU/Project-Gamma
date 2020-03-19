@@ -106,31 +106,31 @@ toggleOff = nr => () => {
 render() {
   return (
       <MDBContainer>
-        <MDBBtn className="modal-btn" color="primary" onClick={this.stopTrip}><FontAwesomeIcon className="fa-icon" icon={faStopCircle} />Stop Trip</MDBBtn>
-        <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(1)}><FontAwesomeIcon className="fa-icon" icon={faPhoneVolume} />Excuse Call</MDBBtn>
+        <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.stopTrip}><FontAwesomeIcon className="fa-icon" icon={faStopCircle} />Stop Trip</MDBBtn>
+        <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.toggle(1)}><FontAwesomeIcon className="fa-icon" icon={faPhoneVolume} />Excuse Call</MDBBtn>
         <MDBModal isOpen={this.state.modal1} toggle={this.toggleOff(1)} centered>
-          <MDBModalHeader toggle={this.toggleOff(1)}>Message Sent</MDBModalHeader>
+          <MDBModalHeader className="modal-header" toggle={this.toggleOff(1)}>Message Sent</MDBModalHeader>
           <MDBModalFooter>
             <MDBBtn className="dismiss-modal" onClick={this.toggleOff(1)}>Dismiss</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
-        <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(2)}><FontAwesomeIcon className="fa-icon" icon={faCar} />Request Pickup</MDBBtn>
+        <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.toggle(2)}><FontAwesomeIcon className="fa-icon" icon={faCar} />Request Pickup</MDBBtn>
         <MDBModal isOpen={this.state.modal2} toggle={this.toggleOff(2)} centered>
           <MDBModalHeader className="modal-header" toggle={this.toggleOff(2)}>Message sent</MDBModalHeader>
           <MDBModalFooter>
           <MDBBtn className="dismiss-modal" onClick={this.toggleOff(2)}>Dismiss</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
-        <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(3)}><FontAwesomeIcon className="fa-icon" icon={faExclamationCircle} />Request Emergency Assistance</MDBBtn>
+        <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.toggle(3)}><FontAwesomeIcon className="fa-icon" icon={faExclamationCircle} />Request Emergency Assistance</MDBBtn>
         <MDBModal isOpen={this.state.modal3} toggle={this.toggleOff(3)} centered>
-          <MDBModalHeader toggle={this.toggleOff(3)}>Message Sent</MDBModalHeader>
+          <MDBModalHeader className="modal-header" toggle={this.toggleOff(3)}>Message Sent</MDBModalHeader>
           <MDBModalFooter>
           <MDBBtn className="dismiss-modal" onClick={this.toggleOff(3)}>Dismiss</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
-        <MDBBtn className="modal-btn" color="primary" onClick={this.toggle(4)}><FontAwesomeIcon className="fa-icon" icon={faMapMarkedAlt} />Update Location</MDBBtn>
+        <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.toggle(4)}><FontAwesomeIcon className="fa-icon" icon={faMapMarkedAlt} />Update Location</MDBBtn>
         <MDBModal isOpen={this.state.modal4} toggle={this.toggleOff(4)} centered>
-          <MDBModalHeader toggle={this.toggleOff(4)}>Location Updated</MDBModalHeader>
+          <MDBModalHeader className="modal-header" toggle={this.toggleOff(4)}>Location Updated</MDBModalHeader>
           <MDBModalFooter>
           <MDBBtn className="dismiss-modal" onClick={this.toggleOff(4)}>Dismiss</MDBBtn>
           </MDBModalFooter>
