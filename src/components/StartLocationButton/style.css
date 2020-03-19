@@ -1,9 +1,10 @@
 .start-button {
-    width: 50%;
+    width: 90%;
     background-color: #ADEFD1FF;
     border: black 1px solid;
     padding: 10px;
     border-radius: 15px;
     color: black;
     font-family: 'Sen', sans-serif;
+    margin-top: 10px;
 }
