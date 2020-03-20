@@ -26,7 +26,24 @@ eventRouter.route(`/start`)
                         })
                         .then((user) => {
                             if(user){
-                                res.status(200).send();
+                                user.friendsList.forEach(friendid => {
+                                    db.User.findById(friendid)
+                                        .then(friend => {
+                                            client.messages.create({
+                                                body: `${user.firstName} ${user.lastName} began an event using StaySafe, please keep your phone available in case they need help`,
+                                                to: friend.phoneNumber,
+                                                from: `+17205134524`
+                                            })
+                                            .then(message => {
+                                                res.status(200).send();
+                                            })
+                                            .catch(err => console.log(err))
+                                        .catch(err => {
+                                            console.log(err);
+                                            res.status(404).send();
+                                        });
+                                    })
+                                });
                             }else{
                                 res.status(404).send();
                             }
