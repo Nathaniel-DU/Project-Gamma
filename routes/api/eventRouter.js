@@ -223,7 +223,7 @@ eventRouter.route(`/updatelocation`)
     });
 
 //Stop
-eventRouter.route(`/stop/`)
+eventRouter.route(`/stop`)
     .put((req, res, next) => {
         db.User.findByIdAndUpdate(req.user._id,
             {

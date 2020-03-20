@@ -10,7 +10,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-app.use(morgan("dev"));
+app.use(morgan("dev", {
+  skip: function(req, res) {
+    return req.originalUrl === '/user/friends'
+  }, stream: process.stdout
+}));
 app.use(express.urlencoded({extended:true}));
 app.use(require(`express-session`)({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.initialize());

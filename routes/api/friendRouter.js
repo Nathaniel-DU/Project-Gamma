@@ -36,34 +36,7 @@ friendRouter.route(`/invite/:friendid`)
     })
 
 
-//Remove
-friendRouter.route(`/remove/:friendid`)
-    .get((req, res, next) => {
-        db.User.findByIdAndUpdate(req.params.userid, {
-            $pull: {
-                friendsList: req.params.friendid
-            }
-        })
-        .then(() => {
-            db.User.findByIdAndUpdate(req.params.friendid, {
-                $pull: {
-                    friendsList: req.params.userid
-                }
-            })
-            .then(() => {
-                res.status(200).send();
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(404).send();
-            });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(404).send();
 
-        });
-    });
 
 //Accept
 friendRouter.route(`/accept/:friendid`)

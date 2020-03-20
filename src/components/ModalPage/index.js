@@ -96,7 +96,7 @@ toggleOff = nr => () => {
   }
 
   stopTrip(){
-    fetch(`/event/stop`);
+    axios.put(`/event/stop`);
     window.location.reload();
   }
 

@@ -9,64 +9,70 @@ userRouter.route(`/friends`)
     .get((req, res, next) => {
         let finalFriendsList = [];
         if(req.user){
-            req.user.friendsList.forEach(friendid => {
-                db.User.findById(friendid)
-                    .then(friendObj => {
-                        let friend = {};
-                        friend.name = `${friendObj.firstName} ${friendObj.lastName}`;
-                        if(friendObj.onEvent){
-                            db.Location.findById(friendObj.locations[friendObj.locations.length - 1])
-                                .then(locationList => {
-                                    //const locationStr = that stuff
-                                    //axios call then pass in locationStr as the the lat long, friend.location = result of axios call 
-                                    //in the .then goes the the rest of this
-
-                                    const locationStr = locationList.locations[locationList.locations.length -1];
-                                    axios({
-                                        "method": "GET",
-                                        "url": "https://google-maps-geocoding.p.rapidapi.com/geocode/json",
-                                        "headers":{
-                                            "content-type":"application/octet-stream",
-                                            "x-rapidapi-host":"google-maps-geocoding.p.rapidapi.com",
-                                            "x-rapidapi-key": process.env.REVERSE_GEOCODING_API_KEY
-                                    }, "params": {
-                                        "language": "en",
-                                        "latlng": locationStr
+            db.User.findById(req.user._id)
+                .then(user => {
+                    if(user.friendsList.length > 0){
+                        user.friendsList.forEach(friendid => {
+                            db.User.findById(friendid)
+                                .then(friendObj => {
+                                    let friend = {};
+                                    friend.name = `${friendObj.firstName} ${friendObj.lastName}`;
+                                    friend.userId = friendObj._id;
+                                    if(friendObj.onEvent){
+                                        db.Location.findById(friendObj.locations[friendObj.locations.length - 1])
+                                            .then(locationList => {
+                                                //const locationStr = that stuff
+                                                //axios call then pass in locationStr as the the lat long, friend.location = result of axios call 
+                                                //in the .then goes the the rest of this
+        
+                                                const locationStr = locationList.locations[locationList.locations.length -1];
+                                                axios({
+                                                    "method": "GET",
+                                                    "url": "https://google-maps-geocoding.p.rapidapi.com/geocode/json",
+                                                    "headers":{
+                                                        "content-type":"application/octet-stream",
+                                                        "x-rapidapi-host":"google-maps-geocoding.p.rapidapi.com",
+                                                        "x-rapidapi-key": process.env.REVERSE_GEOCODING_API_KEY
+                                                }, "params": {
+                                                    "language": "en",
+                                                    "latlng": locationStr
+                                                }
+                                            }).then((response) => {
+                                                friend.location = response.data.results[0].formatted_address;
+                                                finalFriendsList.push(friend);
+                                                if(finalFriendsList.length === req.user.friendsList.length){
+                                                    res.status(200).json(finalFriendsList);
+                                                }
+                                            }).catch((err) => {
+                                                console.log(err)
+                                            });
+        
+                                                // friend.location = locationList.locations[locationList.locations.length - 1];
+                                                // finalFriendsList.push(friend);
+                                                // if(finalFriendsList.length === req.user.friendsList.length){
+                                                //     res.json(finalFriendsList);
+                                                // }
+                                            })
+                                            .catch(err => {
+                                                console.log(err);
+                                                res.status(404).send();
+                                            });
+                                    }else{
+                                        finalFriendsList.push(friend);
+                                        if(finalFriendsList.length === req.user.friendsList.length){
+                                            res.status(200).json(finalFriendsList);
+                                        }
                                     }
-                                }).then((response) => {
-                                    console.log(response.data.results[0].formatted_address);
-                                    friend.location = response.data.results[0].formatted_address;
-                                    finalFriendsList.push(friend);
-                                    if(finalFriendsList.length === req.user.friendsList.length){
-                                        res.json(finalFriendsList);
-                                    }
-                                }).catch((err) => {
-                                    console.log(err)
-                                });
-
-                                    // friend.location = locationList.locations[locationList.locations.length - 1];
-                                    // finalFriendsList.push(friend);
-                                    // if(finalFriendsList.length === req.user.friendsList.length){
-                                    //     res.json(finalFriendsList);
-                                    // }
                                 })
                                 .catch(err => {
                                     console.log(err);
-                                    res.status(404).send();
-                                });
-                        }else{
-                            finalFriendsList.push(friend);
-                            if(finalFriendsList.length === req.user.friendsList.length){
-                                res.status(200).json(finalFriendsList);
-                            }
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        res.send(404).send();
-                    })
-            });
-
+                                    res.send(404).send();
+                                })
+                        });
+                    }else{
+                        res.status(200).json(finalFriendsList);
+                    }
+                })
         }
     });
 
@@ -110,6 +116,35 @@ userRouter.route('/friendinvite')
                 }); 
         }
     });
+
+    //Remove
+userRouter.route(`/remove/:friendid`)
+.get((req, res, next) => {
+    db.User.findByIdAndUpdate(req.user._id, {
+        $pull: {
+            friendsList: req.params.friendid
+        }
+    })
+    .then(() => {
+        db.User.findByIdAndUpdate(req.params.friendid, {
+            $pull: {
+                friendsList: req.user._id
+            }
+        })
+        .then(() => {
+            res.status(200).send();
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(404).send();
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(404).send();
+
+    });
+});
 
 
 
