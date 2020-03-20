@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './style.css';
 
 export default class Logout extends Component {
 
     logOut = () => {
-        fetch(`/auth/logout`);
+        axios.put(`/event/stop`)
+            .then(() => {
+                fetch(`/auth/logout`);
+            });
     }
     
     render(){
