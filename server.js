@@ -6,10 +6,29 @@ const morgan = require("morgan");
 const path = require(`path`);
 const passport = require(`passport`);
 const flash = require(`connect-flash`);
+const helmet = require(`helmet`);
 const app = express();
 
 const PORT = process.env.PORT || 3001;
 
+app.use(helmet({
+  dnsPrefetchControl: true,
+  expectCt: true,
+  featurePolicy: {
+    features: {
+      fullscreen: ["'self"],
+      payment: ["'none'"],
+      usb: ["'none'"]
+    }
+  },
+  frameguard: true,
+  hidePoweredBy: true,
+  hsts: true,
+  ieNoOpen: true,
+  noSniff: true,
+  permittedCrossDomainPolicies: true,
+  xssFilter: true
+}));
 app.use(morgan("dev", {
   skip: function(req, res) {
     return req.originalUrl === '/user/friends'
