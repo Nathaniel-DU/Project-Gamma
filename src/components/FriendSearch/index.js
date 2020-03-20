@@ -38,6 +38,7 @@ class FriendSearch extends React.Component {
             break;
         }
         this.setState({errors, [name]: value});
+        
     }
 
     handleSubmit = event => {
@@ -54,6 +55,7 @@ class FriendSearch extends React.Component {
         }else{
         console.error('Invalid Search')
         }
+        event.target.reset();
     }
   
     render () {

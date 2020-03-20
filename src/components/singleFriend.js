@@ -4,7 +4,11 @@ import DeleteFriend from '../components/DeleteFriend';
 export default ({name, location, userId}) => {
     return (
         <div>
-            <b>{name} <DeleteFriend userId={userId}/></b> {location}
+            <b><DeleteFriend userId={userId}/>{name} </b> 
+            <br/>
+            {location}
+            
+            
             <hr/>
         </div>
         

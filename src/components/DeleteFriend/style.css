@@ -1,0 +1,27 @@
+.delete-icon {
+    color: #ADEFD1FF;
+    margin: auto!important;
+}
+
+.delete-btn {
+    background-color: #00203FFF;
+    border-radius: 4px;
+    float: right;
+    color: #ADEFD1FF;
+}
+
+.close-mdl {
+    background-color: #00203FFF;
+    color: white;
+    border-radius: 15px;
+}
+
+.confirm-delete-btn {
+    background-color: #ADEFD1FF;
+    color: black;
+    border-radius: 15px;
+}
+
+.modal-body, .modal-header {
+    color: #00203FFF;
+}
