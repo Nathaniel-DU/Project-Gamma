@@ -12,7 +12,7 @@ export default class Friends extends Component {
         friendsList()
             .then(data => this.setState({ friends: data }))
             .catch(err => console.log(err));
-        const intervalId = setInterval(this.updateFriendsList, 1000*5);
+        const intervalId = setInterval(this.updateFriendsList, 1000*10);
         this.setState({intervalId: intervalId});
     }
 
