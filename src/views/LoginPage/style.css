@@ -134,3 +134,8 @@ p, div {
     flex-wrap: wrap;
     font-family: 'Sen', sans-serif;
   }
+
+  #login-error {
+    color: red;
+    font-size: 13px;
+  }
