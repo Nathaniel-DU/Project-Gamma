@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateView should render correctly in "debug" mode 1`] = `
+<Fragment>
+  <h1>
+    StaySafe
+  </h1>
+  <div
+    className="button-list"
+  >
+    <ModalPage />
+  </div>
+</Fragment>
+`;

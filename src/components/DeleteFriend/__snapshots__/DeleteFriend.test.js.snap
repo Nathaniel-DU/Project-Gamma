@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteFriend should render correctly in "debug" mode 1`] = `
+<be
+  fluid={false}
+  tag="div"
+>
+  <qe
+    className="delete-btn"
+    color="default"
+    onClick={[Function]}
+    size="sm"
+    tag="button"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className="fa-icon delete-icon"
+      fixedWidth={false}
+      flip={null}
+      icon={
+        Object {
+          "icon": Array [
+            352,
+            512,
+            Array [],
+            "f00d",
+            "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+          ],
+          "iconName": "times",
+          "prefix": "fas",
+        }
+      }
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      swapOpacity={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+  </qe>
+  <o
+    autoFocus={true}
+    backdrop={true}
+    backdropTransitionTimeout={150}
+    centered={true}
+    disableBackdrop={false}
+    disableFocusTrap={true}
+    fade={true}
+    isOpen={false}
+    keyboard={true}
+    modalStylesWithoutBackdrop={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0,
+      }
+    }
+    modalTransitionTimeout={300}
+    noClickableBodyWithoutBackdrop={false}
+    overflowScroll={true}
+    position=""
+    role="dialog"
+    tabIndex="-1"
+    toggle={[Function]}
+    zIndex={1050}
+  >
+    <tt
+      className="modal-header"
+      closeAriaLabel="Close"
+      tag="h4"
+      toggle={[Function]}
+    >
+      Confirm Deletion
+    </tt>
+    <$e
+      className="modal-body"
+    >
+      Are you sure you want to remove this friend from your friend's list?
+    </$e>
+    <et>
+      <qe
+        className="close-mdl"
+        color="default"
+        onClick={[Function]}
+        tag="button"
+      >
+        Cancel
+      </qe>
+      <qe
+        className="confirm-delete-btn"
+        color="default"
+        onClick={[Function]}
+        tag="button"
+      >
+        Confirm
+      </qe>
+    </et>
+  </o>
+</be>
+`;

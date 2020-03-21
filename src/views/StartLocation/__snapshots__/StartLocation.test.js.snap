@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartLocation should render correctly in "debug" mode 1`] = `
+<div
+  id="outer-container"
+>
+  <Hamburger />
+  <main
+    id="page-wrap"
+  >
+    <div>
+      <h1>
+        StaySafe
+      </h1>
+      <div
+        className="start-location"
+      >
+        <div
+          className="container start-trip"
+        >
+          <h2>
+            Click to begin trip.
+          </h2>
+        </div>
+        <StartLocationButton
+          getMyLocation={[Function]}
+          startTrip={[Function]}
+          text="Start"
+        />
+      </div>
+    </div>
+  </main>
+</div>
+`;
