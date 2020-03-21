@@ -65,7 +65,7 @@ class Register extends Component {
             <div className='password'>
               <label htmlFor="password">Password</label>
               <input type='password' name='password' onChange={this.handleChange} />
-              <p>{this.state.loginError}</p>
+              <p id="login-error">{this.state.loginError}</p>
               <button className="login-btn">Log In</button>
             </div>
           </form>
