@@ -82,34 +82,38 @@ userRouter.route('/friendinvite')
             db.User.findOne({'email': req.body.email})
                 .then(user => {
                     if(user) {
-                        db.User.findByIdAndUpdate(req.user._id, {
-                            $addToSet: {
-                                friendsPending: user._id
-                            }
-                        })
-                        .then(invitee => {
-                            if(invitee){
-                                db.User.findByIdAndUpdate(user._id, {
-                                    $addToSet: {
-                                        friendsInvited: req.user._id
-                                    }
-                                })
-                                .then(invited => {
-                                    if(invited){
-                                        sgMail.send({
-                                            to: invited.email,
-                                            from: `info@bknutson.com`,
-                                            subject: `${invitee.firstName} ${invitee.lastName} has invited you to StaySafe`,
-                                            text: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`,
-                                            html: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`
-                                        });
-                                    }
-                                })
-                                .catch(err => console.log(err))
-                            }
-                        })
-                        .catch(err => console.log(err))
-                        res.json('Invite Sent!');
+                        if(!user.friendsList.includes(req.user._id) && !user.friendsInvited.includes(req.user._id)){
+                            db.User.findByIdAndUpdate(req.user._id, {
+                                $addToSet: {
+                                    friendsPending: user._id
+                                }
+                            })
+                            .then(invitee => {
+                                if(invitee){
+                                    db.User.findByIdAndUpdate(user._id, {
+                                        $addToSet: {
+                                            friendsInvited: req.user._id
+                                        }
+                                    })
+                                    .then(invited => {
+                                        if(invited){
+                                            sgMail.send({
+                                                to: invited.email,
+                                                from: `info@bknutson.com`,
+                                                subject: `${invitee.firstName} ${invitee.lastName} has invited you to StaySafe`,
+                                                text: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`,
+                                                html: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`
+                                            });
+                                        }
+                                    })
+                                    .catch(err => console.log(err))
+                                }
+                            })
+                            .catch(err => console.log(err))
+                            res.json('Invite Sent!');
+                        }else{
+                            res.json('User already invited');
+                        }
                     } else {
                         res.json('User not found');
                     }
