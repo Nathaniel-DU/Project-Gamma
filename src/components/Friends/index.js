@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import friendsList from '../utils/friendsList';
-import SingleFriend from './singleFriend';
+import friendsList from '../../utils/friendsList';
+import SingleFriend from '../SingleFriend';
 
 export default class Friends extends Component {
     state = {

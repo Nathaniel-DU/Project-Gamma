@@ -1,5 +1,5 @@
 import React from "react";
-import DeleteFriend from '../components/DeleteFriend';
+import DeleteFriend from '../DeleteFriend';
 
 export default ({name, location, userId}) => {
     return (

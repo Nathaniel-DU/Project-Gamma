@@ -3,7 +3,7 @@ import { stack as Menu } from 'react-burger-menu'
 import Logout from '../Logout';
 import EditProfileButton from '../EditProfileButton';
 import './style.css';
-import Friends from "../friends";
+import Friends from "../Friends";
 import FriendSearch from "../FriendSearch";
 
 class Hamburger extends React.Component {
