@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logout should render correctly in "debug" mode 1`] = `
+<div>
+  <Link
+    to="/"
+  >
+    <button
+      className="blue-button"
+      id="logout-button"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </Link>
+</div>
+`;

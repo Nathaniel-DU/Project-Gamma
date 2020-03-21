@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FriendSearch should render correctly in "debug" mode 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <h4>
+      Add Friend:
+    </h4>
+    <label
+      htmlFor="search-friend"
+    />
+    <input
+      id="search-friend"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email"
+      type="text"
+    />
+    <button
+      className="blue-button"
+      type="submit"
+    >
+      Invite
+    </button>
+  </form>
+</div>
+`;

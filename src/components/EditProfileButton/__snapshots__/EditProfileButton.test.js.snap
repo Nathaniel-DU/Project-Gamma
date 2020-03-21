@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProfileButton should render correctly in "debug" mode 1`] = `
+<div>
+  <Link
+    to="/edit"
+  >
+    <button
+      className="blue-button"
+      id="edit-profile-button"
+    >
+      Edit Profile
+    </button>
+  </Link>
+</div>
+`;
