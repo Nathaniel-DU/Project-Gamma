@@ -112,7 +112,7 @@ userRouter.route('/friendinvite')
                             .catch(err => console.log(err))
                             res.json('Invite Sent!');
                         }else{
-                            res.json('User already invited');
+                            res.json('Friend already invited');
                         }
                     } else {
                         res.json('User not found');
