@@ -74,7 +74,7 @@ class Register extends Component {
       case 'password': 
         errors.password = 
           value.length < 8
-            ? 'Password must be 8 characters long!'
+            ? 'Password must be at least 8 characters long!'
             : '';
         break;
       default:
@@ -109,50 +109,45 @@ class Register extends Component {
     const {errors} = this.state;
     return (
       <div className='wrapper'>
-        <div className='form-wrapper'>
-          <h2>Sign Up</h2>
-          <form onSubmit={this.handleSubmit}>
-            <div className='firstName'>
-              <label htmlFor="firstName">First Name</label>
-              <input type='text' name='firstName' onChange={this.handleChange} />
-              {errors.firstName.length > 0 && 
-                <span className='error'>{errors.firstName}</span>}
-            </div>
-            <div className='lastName'>
-              <label htmlFor="lastName">Last Name</label>
-              <input type='text' name='lastName' onChange={this.handleChange} />
-              {errors.lastName.length > 0 && 
-                <span className='error'>{errors.lastName}</span>}
-            </div>
-            <div className='email'>
-              <label htmlFor="email">Email</label>
-              <input type='email' name='email' onChange={this.handleChange} />
-              {errors.email.length > 0 && 
-                <span className='error'>{errors.email}</span>}
-            </div>
-            <div className='phoneNumber'>
-              <label htmlFor="phoneNumber">Phone Number</label>
-              <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
-              {errors.phoneNumber.length > 0 && 
-                <span className='error'>{errors.phoneNumber}</span>}
-            </div>
-            <div className='password'>
-              <label htmlFor="password">Password</label>
-              <input type='password' name='password' onChange={this.handleChange} />
-              {errors.password.length > 0 && 
-                <span className='error'>{errors.password}</span>}
-            </div>
-            <div className='info'>
-              <small>Password must be at least eight characters in length.</small>
-            </div>
-            
-              <button className="sign-up-button">Sign Up</button>
-          
-          </form>
-        </div>
+      <div className='form-wrapper'>
+        <h2>Sign Up</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div className='firstName'>
+            <label htmlFor="firstName">First Name</label>
+            <input type='text' name='firstName' onChange={this.handleChange} />
+            {errors.firstName.length > 0 &&
+              <span className='error'>{errors.firstName}</span>}
+              <br/>
+            <label htmlFor="lastName">Last Name</label>
+            <input type='text' name='lastName' onChange={this.handleChange} />
+            {errors.lastName.length > 0 &&
+              <span className='error'>{errors.lastName}</span>}
+              <br/>
+            <label htmlFor="email">Email</label>
+            <input type='email' name='email' onChange={this.handleChange} />
+            {errors.email.length > 0 &&
+              <span className='error'>{errors.email}</span>}
+              <br/>
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
+            {errors.phoneNumber.length > 0 &&
+              <span className='error'>{errors.phoneNumber}</span>}
+              <br/>
+            <label htmlFor="password">Password</label>
+            <br/>
+            <input type='password' name='password' onChange={this.handleChange} />
+            {errors.password.length > 0 &&
+              <span className='error'>{errors.password}</span>}
+              <br/>
+            <small>Password must be at least eight characters in length.</small>
+            <button className="sign-up-button">Sign Up</button>
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+
+  );
+}
 }
           
           
