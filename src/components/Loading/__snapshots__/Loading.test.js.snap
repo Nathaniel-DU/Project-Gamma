@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render correctly in "debug" mode 1`] = `
+<div
+  className="spinner"
+>
+  <img
+    alt="Loading"
+    src="loading.svg"
+  />
+</div>
+`;
