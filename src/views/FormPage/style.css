@@ -132,3 +132,8 @@ p, div {
     display: flex;
     flex-wrap: wrap;
   }
+
+
+  .modal-open {
+    overflow: auto!important;
+}

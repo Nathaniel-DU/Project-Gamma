@@ -1,0 +1,18 @@
+.save-changes-btn, .cancel-profile-changes-btn {
+    width: 208px;
+    margin-top: 1.2em!important;
+    padding: 0.845em;
+    border: none;
+    border-radius: 10px;
+    background-color: #ADEFD1FF;
+    color: black;
+    
+}
+
+.modal-open {
+    overflow: auto!important;
+}
+
+.cancel-profile-changes-btn {
+    width: 210px;
+}
