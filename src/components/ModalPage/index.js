@@ -77,7 +77,6 @@ toggleOff = nr => () => {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         })
-        //Axios post request goes here.
         axios.put('/event/updatelocation', {
           lat: this.state.latitude,
           long: this.state.longitude,
@@ -99,9 +98,6 @@ toggleOff = nr => () => {
     axios.put(`/event/stop`);
     window.location.reload();
   }
-
- 
-
 
 render() {
   return (

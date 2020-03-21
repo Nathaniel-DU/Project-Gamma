@@ -9,6 +9,7 @@ import StartLocation from "./views/StartLocation";
 import UpdateView from "./views/UpdateView";
 import Login from "./views/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AcceptedFriendRequest from "./views/AcceptedFriendRequest";
 
 // styles
 import "./App.css";
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/auth/create" exact component={FormPage}/>
           <ProtectedRoute path="/home" component={StartLocation} />
           <Route path="/auth/login" exact component={Login}/>
+          <Route path="/user/:userid/friends/accept/:friendid" component={AcceptedFriendRequest}/>
         </Switch>
       </div>
     </Router>
