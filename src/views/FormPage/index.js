@@ -108,6 +108,9 @@ class Register extends Component {
   render() {
     const { errors } = this.state;
     return (
+      <div id="outer-container">
+     
+      <h1>StaySafe</h1>
       <div className='wrapper'>
       <div className='form-wrapper'>
         <h2>Sign Up</h2>
@@ -145,7 +148,7 @@ class Register extends Component {
         </form>
       </div>
     </div>
-
+</div>
   );
 }
 }
