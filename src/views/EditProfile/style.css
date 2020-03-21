@@ -9,3 +9,7 @@
     color: black;
     margin: auto;
 }
+
+.modal-open {
+    overflow: auto!important;
+}
