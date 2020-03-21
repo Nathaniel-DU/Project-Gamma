@@ -89,7 +89,7 @@ p, div {
     min-width: 100%;
     cursor: pointer;
     margin-right: 0.25em;
-    margin-top: 0.5em;
+    margin-top: 1.2em!important;
     padding: 	0.845em;
     border: none;
     border-radius: 10px;
