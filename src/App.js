@@ -10,6 +10,7 @@ import UpdateView from "./views/UpdateView";
 import Login from "./views/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AcceptedFriendRequest from "./views/AcceptedFriendRequest";
+import EditProfile from "./views/EditProfile";
 
 // styles
 import "./App.css";
@@ -29,6 +30,7 @@ const App = () => {
           <ProtectedRoute path="/home" component={StartLocation} />
           <Route path="/auth/login" exact component={Login}/>
           <Route path="/user/:userid/friends/accept/:friendid" component={AcceptedFriendRequest}/>
+          <ProtectedRoute path="/edit" exact component ={EditProfile} />
         </Switch>
       </div>
     </Router>

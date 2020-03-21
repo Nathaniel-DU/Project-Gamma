@@ -119,32 +119,61 @@ userRouter.route('/friendinvite')
 
     //Remove
 userRouter.route(`/remove/:friendid`)
-.get((req, res, next) => {
-    db.User.findByIdAndUpdate(req.user._id, {
-        $pull: {
-            friendsList: req.params.friendid
-        }
-    })
-    .then(() => {
-        db.User.findByIdAndUpdate(req.params.friendid, {
+    .get((req, res, next) => {
+        db.User.findByIdAndUpdate(req.user._id, {
             $pull: {
-                friendsList: req.user._id
+                friendsList: req.params.friendid
             }
         })
         .then(() => {
-            res.status(200).send();
+            db.User.findByIdAndUpdate(req.params.friendid, {
+                $pull: {
+                    friendsList: req.user._id
+                }
+            })
+            .then(() => {
+                res.status(200).send();
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(404).send();
+            });
         })
         .catch(err => {
             console.log(err);
             res.status(404).send();
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(404).send();
 
+        });
     });
-});
+
+userRouter.route(`/profile`)
+    .get((req, res, next) => {
+        db.User.findById(req.user._id)
+            .then(user => {
+                if(user){
+                    res.json({firstName: user.firstName, lastName: user.lastName, email: user.email, phoneNumber: user.phoneNumber})
+                }else{
+                    res.status(404).send();
+                }
+            });
+    })
+    .put((req, res, next) => {
+        db.User.findByIdAndUpdate(req.user._id, {
+            $set: {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                phoneNumber: req.body.phoneNumber
+            }
+        })
+            .then(user => {
+                if(user){
+                    res.status(200).send();
+                }else{
+                    res.status(404).send();
+                }
+            });
+    })
 
 
 
