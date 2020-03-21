@@ -39,7 +39,7 @@ friendRouter.route(`/invite/:friendid`)
 
 
 //Accept
-friendRouter.route(`/accept/:friendid`)
+friendRouter.route(`/accept/:friendid/confirmed`)
     .get((req, res, next) => {
         db.User.findByIdAndUpdate(req.params.userid, {
             $addToSet: {
