@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import "./style.css"
 import profileData from "../../utils/profileData";
@@ -143,9 +144,9 @@ class Edit extends Component {
                 <span className='error'>{errors.phoneNumber}</span>}
                 <br/>
                 <button className="save-changes-btn">Save Changes</button>
-                <button to="/home" className="cancel-profile-changes-btn">Cancel</button>
             </div>
           </form>
+          <Link to="/home"><button className="cancel-profile-changes-btn">Cancel</button></Link>
         </div>
       </div>
       </main>
