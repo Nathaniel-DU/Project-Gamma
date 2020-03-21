@@ -15,10 +15,9 @@ authRouter.route(`/signup`)
 
 authRouter.route(`/login`)
     .post(passport.authenticate(`local`, {
-    failureRedirect: `/auth/login`,
-    failureFlash: `true`
+    failureRedirect: `/auth/loginFailed`,
 }), (req, res, next) => {
-    res.redirect(`/`);
+    res.status(200).send();
 });
 
 authRouter.route(`/isauthenticated`)
@@ -34,6 +33,15 @@ authRouter.route(`/logout`)
     .get((req, res, next) => {
         req.logout();
         res.redirect(`/`);
+    });
+
+authRouter.route(`/loginFailed`)
+    .get((req, res, next) => {
+        res.json(
+            {
+                message: "Incorrect username or password",
+                status: 401
+            });
     });
 
 

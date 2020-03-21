@@ -4,7 +4,7 @@ import axios from 'axios';
 import "./style.css"
 //import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
-class FormPage extends Component {
+class LoginPage extends Component {
   render() {
     return (
       <Register/>
@@ -20,10 +20,7 @@ class Register extends Component {
     this.state = {
       email: null,
       password: null,
-      errors: {
-        email: '',
-        password: '',
-      }
+      loginError: ''
     };
   }
   handleChange = (event) => {
@@ -41,9 +38,16 @@ class Register extends Component {
         password: this.state.password
       }
       axios.post(`/auth/login`, user)
-      .then(res => {
-        window.location = '/home';
-      })
+        .then(res => {
+          if(res.data.status === 401){
+            this.setState({loginError: res.data.message})
+          }else{
+            window.location = '/home';
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
 
 
@@ -61,8 +65,7 @@ class Register extends Component {
             <div className='password'>
               <label htmlFor="password">Password</label>
               <input type='password' name='password' onChange={this.handleChange} />
-            
-            
+              <p>{this.state.loginError}</p>
               <button className="login-btn">Log In</button>
             </div>
           </form>
@@ -74,4 +77,4 @@ class Register extends Component {
           
           
                  
-    export default FormPage;
+    export default LoginPage;
