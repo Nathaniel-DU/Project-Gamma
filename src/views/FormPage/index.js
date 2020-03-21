@@ -128,14 +128,15 @@ class Register extends Component {
                 <br/>
               <label htmlFor="phoneNumber">Phone Number</label>
               <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
-            
               {errors.phoneNumber.length > 0 &&
                 <span className='error'>{errors.phoneNumber}</span>}
                 <br/>
               <label htmlFor="password">Password</label>
+              <br/>
               <input type='password' name='password' onChange={this.handleChange} />
               {errors.password.length > 0 &&
                 <span className='error'>{errors.password}</span>}
+                <br/>
               <small>Password must be at least eight characters in length.</small>
               <button className="sign-up-button">Sign Up</button>
             </div>
