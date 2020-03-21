@@ -17,7 +17,7 @@ h1 {
     color: #ADEFD1FF;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 100px!important;
+    /* margin-bottom: 100px!important; */
     padding-right: 30px;
     padding-top: 25px;
     font-family: 'Sen', sans-serif;
