@@ -28,6 +28,7 @@ const userRouter = require(`./routes/api/userRouter`);
 app.use(`/auth`, authRouter);
 app.use(`/event`, eventRouter);
 app.use(`/user`, userRouter);
+app.use('/img', require("./routes/api/imgRouter"))
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("build"));

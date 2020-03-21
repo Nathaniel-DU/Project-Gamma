@@ -2,17 +2,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "./style.css"
-//import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 
 class FormPage extends Component {
   render() {
     return (
-      <Register/>
-      
+      <Register />
+
     );
   }
 }
-const validPhoneRegex=RegExp(/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/i)
+const validPhoneRegex = RegExp(/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/i)
 const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
 const validateForm = (errors) => {
   let valid = true;
@@ -24,55 +24,54 @@ const validateForm = (errors) => {
 
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
-      phoneNumber: null,
-      password: null,
-      errors: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber:'',
-        password: '',
-      }
-    };
-  }
+  state = {
+    firstName: null,
+    lastName: null,
+    email: null,
+    phoneNumber: null,
+    password: null,
+    img: null,
+    errors: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      password: '',
+    }
+  };
+
   handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
     let errors = this.state.errors;
 
     switch (name) {
-      case 'firstName': 
-        errors.firstName = 
+      case 'firstName':
+        errors.firstName =
           value.length < 2
             ? 'First Name must be 2 characters long!'
             : '';
         break;
-        case 'lastName': 
-        errors.lastName = 
+      case 'lastName':
+        errors.lastName =
           value.length < 2
             ? 'Last Name must be 2 characters long!'
             : '';
         break;
-      case 'email': 
-        errors.email = 
+      case 'email':
+        errors.email =
           validEmailRegex.test(value)
             ? ''
             : 'Email is not valid!';
         break;
       case 'phoneNumber':
-        errors.phoneNumber=
-        validPhoneRegex.test(value)  
-        ? ''
-        : 'Must Be A Valid Phone Number';
+        errors.phoneNumber =
+          validPhoneRegex.test(value)
+            ? ''
+            : 'Must Be A Valid Phone Number';
         break;
-      case 'password': 
-        errors.password = 
+      case 'password':
+        errors.password =
           value.length < 8
             ? 'Password must be 8 characters long!'
             : '';
@@ -81,32 +80,42 @@ class Register extends Component {
         break;
     }
 
-    this.setState({errors, [name]: value});
+    this.setState({ errors, [name]: value });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    if(validateForm(this.state.errors)) {
-      const user = {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        phoneNumber: this.state.phoneNumber,
-        password: this.state.password
-      }
-      axios.post(`/auth/signup`, user)
+    const user = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      password: this.state.password
+    }
 
-      .then(res => {
-        window.location = '/home';
-      });
-      console.info('Valid Form')
-    }else{
-      console.error('Invalid Form')
+    try {
+      // eslint-disable-next-line no-throw-literal
+      if (!validateForm(this.state.errors)) throw { message: "Invalid Form" };
+      const formData = new FormData()
+      formData.append('file', this.state.img)
+      const resp = await axios.post("/img", formData)
+      console.log(resp)
+      // await axios.post(`/auth/signup`, { ...user, img: resp.data })
+      window.location = '/home';
+    } catch (error) {
+      console.log(error)
     }
   }
 
+  fileSelect = event => {
+    const { files } = event.target;
+    console.log(files[0])
+
+    this.setState({ img: files[0] }, () => console.log(this.state.img))
+  }
+
   render() {
-    const {errors} = this.state;
+    const { errors } = this.state;
     return (
       <div className='wrapper'>
         <div className='form-wrapper'>
@@ -115,35 +124,39 @@ class Register extends Component {
             <div className='firstName'>
               <label htmlFor="firstName">First Name</label>
               <input type='text' name='firstName' onChange={this.handleChange} />
-              {errors.firstName.length > 0 && 
+              {errors.firstName.length > 0 &&
                 <span className='error'>{errors.firstName}</span>}
             </div>
             <div className='lastName'>
               <label htmlFor="lastName">Last Name</label>
               <input type='text' name='lastName' onChange={this.handleChange} />
-              {errors.lastName.length > 0 && 
+              {errors.lastName.length > 0 &&
                 <span className='error'>{errors.lastName}</span>}
             </div>
             <div className='email'>
               <label htmlFor="email">Email</label>
               <input type='email' name='email' onChange={this.handleChange} />
-              {errors.email.length > 0 && 
+              {errors.email.length > 0 &&
                 <span className='error'>{errors.email}</span>}
             </div>
             <div className='phoneNumber'>
               <label htmlFor="phoneNumber">Phone Number</label>
               <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
-              {errors.phoneNumber.length > 0 && 
+              {errors.phoneNumber.length > 0 &&
                 <span className='error'>{errors.phoneNumber}</span>}
             </div>
             <div className='password'>
               <label htmlFor="password">Password</label>
               <input type='password' name='password' onChange={this.handleChange} />
-              {errors.password.length > 0 && 
+              {errors.password.length > 0 &&
                 <span className='error'>{errors.password}</span>}
             </div>
             <div className='info'>
-              <small>Password must be eight characters in length.</small>
+            
+            </div>
+            <div className='image'>
+              <label htmlFor="image">Profile Image</label>
+              <input type='file' name='image' onChange={this.fileSelect} />
             </div>
             <div className='submit'>
               <button>Sign Up</button>
@@ -154,7 +167,7 @@ class Register extends Component {
     );
   }
 }
-          
-          
-                 
+
+
+
 export default FormPage;
