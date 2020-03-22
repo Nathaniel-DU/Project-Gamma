@@ -12,3 +12,8 @@ button#edit-profile-button {
     margin-bottom: 1.3em;
 
 }
+
+button:hover {
+    background-color: #4A4E69;
+    color: #fefefe;
+  }  
