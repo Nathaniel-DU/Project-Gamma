@@ -11,3 +11,8 @@ button#logout-button {
     color: #fefefe;
     margin-bottom: 10px;
 }
+
+button:hover {
+    background-color: #4A4E69!important;
+    color: #fefefe!important;
+  }  
