@@ -1,88 +1,44 @@
-# Sample 01 - Logging In and Gated Content
+# StaySafe Wherever You Go
+StaySafe is a browser based web application intended for use on mobile devices. Our application allows users call for help on the go with ease, and keep tabs on their friends who are out and about.  
 
-This sample demonstrates:
+![Screenshot1](./src/assets/merge1.png)  
+![Screenshot2](./src/assets/merge2.png)  
 
-- Logging in to Auth0 using Redirect Mode
-- Accessing profile information that has been provided in the ID token
-- Gated content. The `/profile` route is not accessible without having first logged in
+## Our Mission
+Our plan for StaySafe was to design an application to help keep users safe in away from home senarios, such as first dates, Craigslist encounters, or any potentially vulnerable or dangerous situation. The app allows users to update their location when on any kind of trip away from home. When a user begins a trip, a text message is sent to the user's friends notifying them the user's trip has begun. Friends of the user are able to view the user's last known location while they are on a trip by viewing their friends list. If anything goes wrong, the user can send out a text message to their friends list with the press of a button asking for either: an urgent phone call giving the user an excuse to leave, a request asking to be picked up at the user's current location, or a requst asking emergency services to be contacted. The goal was for the app to be useful in a wide range of senarios, allowing the user to call for help in a variety of ways with a single button press. The ease of use and powerful functionality of StaySafe is essential in a stressful situation.
 
-## Project setup
+## Demo The App
+[Click Here](https://staysafeapp.herokuapp.com/) to view the application on heroku (mobile device preferred)
 
-Use `yarn` or `npm` to install the project dependencies:
+## Design
+Our app features a mobile first design, with a color scheme thats pleasing to look at, while allowing for appropriate contrast. To maintain our philosophy surrounding ease of use and simplicity, most of the key functionality happens on the backend. Everything is easily accessible to the user, no digging through multiple front end components. While the app can certainly be used on a laptop or desktop computer, using a mobile device is strongly recommended for the situations in which this application is useful.
 
-```bash
-# Using npm..
-npm install
+## Tools and Technologies
+* HTML/CSS
+* Javascript/ES6
+* Node JS
+* Express JS
+* MongoDB
+* Mongoose
+* Passport JS
+* Bcrypt
+* Twilio
+* Sendgrid
+* Axios
+* React
+* React Router
+* React Burger Menu
+* MDB React
+* Bootstrap
+* History
+* Helmet
+* Greenlock
+* Morgan
+* Jest/Enzyme
+* FontAwesome
 
-# Using yarn..
-yarn install
-```
-
-### Configuration
-
-The project needs to be configured with your Auth0 domain and client ID in order for the authentication flow to work.
-
-To do this, first copy `src/auth_config.json.example` into a new file in the same folder called `src/auth_config.json`, and replace the values with your own Auth0 application credentials:
-
-```json
-{
-  "domain": "{YOUR AUTH0 DOMAIN}",
-  "clientId": "{YOUR AUTH0 CLIENT ID}"
-}
-```
-
-### Compiles and hot-reloads for development
-
-```bash
-npm run start
-```
-
-## Deployment
-
-### Compiles and minifies for production
-
-```bash
-npm run build
-```
-
-### Docker build
-
-To build and run the Docker image, run `exec.sh`, or `exec.ps1` on Windows.
-
-### Run your tests
-
-```bash
-npm run test
-```
-
-## Frequently Asked Questions
-
-We are compiling a list of questions and answers regarding the new JavaScript SDK - if you're having issues running the sample applications, [check the FAQ](https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md)!
-
-# What is Auth0?
-
-Auth0 helps you to:
-
-- Add authentication with [multiple authentication sources](https://docs.auth0.com/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, among others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
-- Add authentication through more traditional **[username/password databases](https://docs.auth0.com/mysql-connection-tutorial)**.
-- Add support for **[linking different user accounts](https://docs.auth0.com/link-accounts)** with the same user.
-- Support for generating signed [Json Web Tokens](https://docs.auth0.com/jwt) to call your APIs and **flow the user identity** securely.
-- Analytics of how, when and where users are logging in.
-- Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
-
-## Create a Free Auth0 Account
-
-1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
-2. Use Google, GitHub or Microsoft Account to login.
-
-## Issue Reporting
-
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
-
-## Author
-
-[Auth0](https://auth0.com)
-
-## License
-
-This project is licensed under the MIT license. See the [LICENSE](../LICENSE) file for more info.
+## Contributors
+* [Bradley Knutson](https://github.com/bradleyknutson)
+* [Nathaniel Anderson](https://github.com/Nathaniel-DU)
+* [Brittany Huber](https://github.com/bhuber23)
+* [Nicholas Herrick](https://github.com/nicholasherrick)
