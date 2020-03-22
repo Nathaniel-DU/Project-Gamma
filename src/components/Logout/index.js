@@ -8,14 +8,19 @@ export default class Logout extends Component {
     logOut = () => {
         axios.put(`/event/stop`)
             .then(() => {
-                fetch(`/auth/logout`);
+                axios.get('/auth/logout')
+                    .then(res => {
+                        if(res.status === 200){
+                            window.location.replace('/');
+                        }
+                    });
             });
     }
     
     render(){
         return(
             <div>
-                <Link to="/"><button className='blue-button' id='logout-button' onClick={this.logOut}>Logout</button></Link>
+                <button className='blue-button' id='logout-button' onClick={this.logOut}>Logout</button>
             </div>
         )
     }
