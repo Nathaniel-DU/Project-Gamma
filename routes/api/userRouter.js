@@ -21,10 +21,6 @@ userRouter.route(`/friends`)
                                     if(friendObj.onEvent){
                                         db.Location.findById(friendObj.locations[friendObj.locations.length - 1])
                                             .then(locationList => {
-                                                //const locationStr = that stuff
-                                                //axios call then pass in locationStr as the the lat long, friend.location = result of axios call 
-                                                //in the .then goes the the rest of this
-        
                                                 const locationStr = locationList.locations[locationList.locations.length -1];
                                                 axios({
                                                     "method": "GET",
@@ -33,25 +29,19 @@ userRouter.route(`/friends`)
                                                         "content-type":"application/octet-stream",
                                                         "x-rapidapi-host":"google-maps-geocoding.p.rapidapi.com",
                                                         "x-rapidapi-key": process.env.REVERSE_GEOCODING_API_KEY
-                                                }, "params": {
-                                                    "language": "en",
-                                                    "latlng": locationStr
-                                                }
-                                            }).then((response) => {
-                                                friend.location = response.data.results[0].formatted_address;
-                                                finalFriendsList.push(friend);
-                                                if(finalFriendsList.length === req.user.friendsList.length){
-                                                    res.status(200).json(finalFriendsList);
-                                                }
-                                            }).catch((err) => {
-                                                console.log(err)
-                                            });
-        
-                                                // friend.location = locationList.locations[locationList.locations.length - 1];
-                                                // finalFriendsList.push(friend);
-                                                // if(finalFriendsList.length === req.user.friendsList.length){
-                                                //     res.json(finalFriendsList);
-                                                // }
+                                                    }, "params": {
+                                                        "language": "en",
+                                                        "latlng": locationStr
+                                                    }
+                                                }).then((response) => {
+                                                    friend.location = response.data.results[0].formatted_address;
+                                                    finalFriendsList.push(friend);
+                                                    if(finalFriendsList.length === req.user.friendsList.length){
+                                                        res.status(200).json(finalFriendsList);
+                                                    }
+                                                }).catch((err) => {
+                                                    console.log(err)
+                                                });
                                             })
                                             .catch(err => {
                                                 console.log(err);
@@ -104,6 +94,7 @@ userRouter.route('/friendinvite')
                                                 text: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`,
                                                 html: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`
                                             });
+                                            res.status(200).send();
                                         }
                                     })
                                     .catch(err => console.log(err))

@@ -9,6 +9,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AcceptedFriendRequest from "./views/AcceptedFriendRequest";
 import EditProfile from "./views/EditProfile";
 import UnauthenticatedRoute from './components/UnauthenticatedRoute';
+import ResetPassword from './views/ResetPassword';
+import RequestReset from './views/RequestReset';
 
 // styles
 import "./App.css";
@@ -28,6 +30,8 @@ const App = () => {
           <ProtectedRoute path="/home" component={StartLocation} />
           <UnauthenticatedRoute path="/auth/login" exact component={Login}/>
           <Route path="/user/:userid/friends/accept/:friendid" component={AcceptedFriendRequest}/>
+          <UnauthenticatedRoute path="/auth/reset/:resetid" component={ResetPassword}/>
+          <UnauthenticatedRoute path="/auth/password-reset" component={RequestReset}/>
           <ProtectedRoute path="/edit" exact component ={EditProfile} />
           <Route path="*"><Redirect to="/"/></Route>
         </Switch>

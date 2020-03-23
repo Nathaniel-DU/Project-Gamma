@@ -1,16 +1,14 @@
 
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import "./style.css";
+import {Redirect} from 'react-router-dom';
+import Loading from '../../components/Loading'
 //import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
-class LoginPage extends Component {
+class RequestReset extends Component {
   render() {
-    return (
-      <Register/>
-      
-    );
+    return <Register/>
   }
 }
 
@@ -20,8 +18,7 @@ class Register extends Component {
     super(props);
     this.state = {
       email: null,
-      password: null,
-      loginError: ''
+      resetMessage: null
     };
   }
   handleChange = (event) => {
@@ -35,19 +32,13 @@ class Register extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
       const user = {
-        email: this.state.email,
-        password: this.state.password
+        email: this.state.email
       }
-      axios.post(`/auth/login`, user)
+      axios.post('/auth/reset', user)
         .then(res => {
-          if(res.data.status === 401){
-            this.setState({loginError: res.data.message})
-          }else{
-            window.location = '/home';
+          if(res.data.message){
+            this.setState({resetMessage: res.data.message})
           }
-        })
-        .catch(err => {
-          console.log(err);
         })
     }
 
@@ -59,20 +50,15 @@ class Register extends Component {
       <h1>StaySafe</h1>
       <div className='wrapper'>
         <div className='form-wrapper'>
-          <h2>Sign In</h2>
+          <h2>Reset Password</h2>
           <form onSubmit={this.handleSubmit}>
             <div className='email'>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">email</label>
               <input type='email' name='email' onChange={this.handleChange} />
-            </div>
-            <div className='password'>
-              <label htmlFor="password">Password</label>
-              <input type='password' name='password' onChange={this.handleChange} />
-              <p id="login-error">{this.state.loginError}</p>
-              <button className="login-btn">Log In</button>
+              <button className="reset-btn">Request Reset</button>
+              <p id="reset-error">{this.state.resetMessage}</p>
             </div>
           </form>
-          <Link to="/auth/password-reset">Forgot Password?</Link>
         </div>
       </div>
       </div>
@@ -82,4 +68,4 @@ class Register extends Component {
           
           
                  
-    export default LoginPage;
+    export default RequestReset;
