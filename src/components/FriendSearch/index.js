@@ -15,7 +15,7 @@ const validateForm = (errors) => {
 class FriendSearch extends React.Component {
 
     state = {
-        email: null,
+        email: '',
         errors: {
             email: ''
         },
@@ -45,7 +45,7 @@ class FriendSearch extends React.Component {
         event.preventDefault();
         if(validateForm(this.state.errors)) {
         const friend = {
-            email: this.state.email,
+            email: this.state.email.toLowerCase(),
         }
         axios.post(`/user/friendinvite`, friend)
         .then(res => {

@@ -22,14 +22,13 @@ const validateForm = (errors) => {
   return valid;
 }
 
-
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
       firstName: null,
       lastName: null,
-      email: null,
+      email: '',
       phoneNumber: null,
       password: null,
       errors: {
@@ -41,6 +40,7 @@ class Register extends Component {
       }
     };
   }
+  
   handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -80,7 +80,6 @@ class Register extends Component {
       default:
         break;
     }
-
     this.setState({ errors, [name]: value });
   }
 
@@ -90,18 +89,18 @@ class Register extends Component {
       const user = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        email: this.state.email,
+        email: this.state.email.toLowerCase(),
         phoneNumber: this.state.phoneNumber,
         password: this.state.password
       }
-      axios.post(`/auth/signup`, user)
-
+      if(user.firstName && user.lastName && user.email && user.phoneNumber && user.password){
+        axios.post(`/auth/signup`, user)
         .then(res => {
           window.location = '/home';
         });
-      console.info('Valid Form')
+      }
     } else {
-      console.error('Invalid Form')
+      console.error('Invalid Form');
     }
   }
 
@@ -144,6 +143,8 @@ class Register extends Component {
               <br/>
             <small>Password must be at least eight characters in length.</small>
             <button className="sign-up-button">Sign Up</button>
+            <br/>
+            <span className='error'>{errors.form}</span>
           </div>
         </form>
       </div>
