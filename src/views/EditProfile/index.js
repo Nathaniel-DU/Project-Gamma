@@ -32,7 +32,7 @@ class Edit extends Component {
     this.state = {
       firstName: null,
       lastName: null,
-      email: null,
+      email: '',
       phoneNumber: null,
       errors: {
         firstName: '',
@@ -96,7 +96,7 @@ class Edit extends Component {
       const user = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        email: this.state.email,
+        email: this.state.email.toLowerCase(),
         phoneNumber: this.state.phoneNumber,
       }
       axios.put(`/user/profile`, user)

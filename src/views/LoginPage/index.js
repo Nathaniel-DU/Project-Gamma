@@ -19,7 +19,7 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
+      email: '',
       password: null,
       loginError: ''
     };
@@ -35,7 +35,7 @@ class Register extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
       const user = {
-        email: this.state.email,
+        email: this.state.email.toLowerCase(),
         password: this.state.password
       }
       axios.post(`/auth/login`, user)
