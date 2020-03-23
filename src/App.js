@@ -10,11 +10,13 @@ import UpdateView from "./views/UpdateView";
 import Login from "./views/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
 // styles
 import "./App.css";
 
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
+ 
 initFontAwesome();
 
 const App = () => {
