@@ -23,6 +23,10 @@ const UserSchema = new Schema({
         ]
     },
 
+    passwordResetLink: {
+        type: String
+    }, 
+
     friendsList: [
         {
             type: Schema.Types.ObjectId,
