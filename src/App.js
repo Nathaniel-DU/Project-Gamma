@@ -12,11 +12,13 @@ import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import ResetPassword from './views/ResetPassword';
 import RequestReset from './views/RequestReset';
 
+
 // styles
 import "./App.css";
 
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
+ 
 initFontAwesome();
 
 const App = () => {

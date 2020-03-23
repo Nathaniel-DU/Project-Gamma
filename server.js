@@ -30,11 +30,11 @@ app.use(helmet({
   xssFilter: true
 }));
 app.use(morgan("dev", {
-  skip: function(req, res) {
+  skip: function (req, res) {
     return req.originalUrl === '/user/friends'
   }, stream: process.stdout
 }));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(require(`express-session`)({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -53,8 +53,12 @@ app.use(`/event`, eventRouter);
 app.use(`/user`, userRouter);
 
 if (process.env.NODE_ENV === "production") {
+  const enforce = require("express-sslify");
+  app.use(enforce.HTTPS({
+    trustProtoHeader: true
+  }))
   app.use(express.static("build"));
-  app.get(`*`, function(req, res) {
+  app.get(`*`, function (req, res) {
     res.sendFile(path.join(__dirname, `build`, `index.html`));
   });
 }
@@ -66,10 +70,10 @@ mongoose.connect(process.env.MONGODB_URI, {
   useFindAndModify: false
 }).then(() => {
   app.listen(PORT, () => {
-      console.log(`Now listening on PORT ${PORT}/`);
+    console.log(`Now listening on PORT ${PORT}/`);
   });
 }).catch(err => {
-  if(err) throw err;
+  if (err) throw err;
 });
 
 module.exports = app;
