@@ -10,19 +10,7 @@ p,label {
 p, div {
   font-family: 'Sen', sans-serif;
   }
-  
-  /* 
-    Colors:
-    https://coolors.co/22223b-4a4e69-eadae4-9a8c98-c9ada7 
-  */
-  /*
-  YANKEES BLUE: #22223B
-  INDEPENDENCE: #4A4E69
-  PLATINUM: #EADAE4
-  SPANISH GRAY: #9A8C98
-  SILVER PINK: #C9ADA7
-  */
-  
+
   .wrapper {
     height: 97vh;
     width: 100%;
@@ -91,7 +79,6 @@ p, div {
  .reset-btn {
     min-width: 90%;
     cursor: pointer;
-    /* margin-right: 0.25em; */
     margin-top: 2.4em;
     padding: 	0.845em;
     border: none;

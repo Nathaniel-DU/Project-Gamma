@@ -53,7 +53,7 @@ class Register extends Component {
           <h2>Reset Password</h2>
           <form onSubmit={this.handleSubmit}>
             <div className='email'>
-              <label htmlFor="email">email</label>
+              <label htmlFor="email">Email</label>
               <input type='email' name='email' onChange={this.handleChange} />
               <button className="reset-btn">Request Reset</button>
               <p id="reset-error">{this.state.resetMessage}</p>

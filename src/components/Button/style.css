@@ -1,21 +1,8 @@
-/* .mint-button {
-    width: 90%;
-    background-color: #ADEFD1FF;
-    border: black 1px solid;
-    
-    border-radius: 15px;
-    display: block;
-    margin: auto;
-    color: black;
-}  */
-
 .mint-button {
     min-width: 90%;
     cursor: pointer;
     margin-right: 0.25em;
     margin-top: 0.5em;
-    /* padding-right: 	0.938em;
-    padding-left: 	0.938em; */
     border: none;
     border-radius: 10px;
     background-color: #ADEFD1FF;
@@ -25,10 +12,5 @@
     margin-bottom: 20px!important;
     padding: 10px;
     border: black 1px solid;
-    
   }
    
-  button:hover {
-    background-color: #4A4E69;
-    color: #fefefe;
-  } 
