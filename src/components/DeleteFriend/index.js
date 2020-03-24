@@ -31,7 +31,6 @@ export default class DeleteFriend extends Component {
     }
 
     render() {
-
         return (
             <MDBContainer>
                 <MDBBtn size="sm" className="delete-btn" onClick={this.toggle(1)}><FontAwesomeIcon className="fa-icon delete-icon" icon={faTimes} /></MDBBtn>

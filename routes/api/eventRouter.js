@@ -205,7 +205,6 @@ eventRouter.route(`/ride`)
             });
     });
 
-
 //Update Location
 eventRouter.route(`/updatelocation`)
     .put((req, res, next) => {
@@ -273,8 +272,5 @@ eventRouter.route(`/stop`)
             })
             .catch(err => console.log(err));
     });
-
-
-
 
 module.exports = eventRouter;

@@ -3,7 +3,6 @@ const sgMail = require(`@sendgrid/mail`);
 const db = require(`../../models`);
 sgMail.setApiKey(process.env.SENDGRID_API);
 
-
 //Accept
 friendRouter.route(`/accept/:friendid/confirmed`)
     .get((req, res, next) => {
@@ -46,12 +45,12 @@ friendRouter.route(`/accept/:friendid/confirmed`)
             .catch(err => {
                 console.log(err);
                 res.status(404).send();
-            })
+            });
         })
         .catch(err => {
             console.log(err);
             res.status(404).send();
-        })
+        });
     });
 
 module.exports = friendRouter;

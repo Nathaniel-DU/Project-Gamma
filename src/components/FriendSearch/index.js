@@ -38,7 +38,6 @@ class FriendSearch extends React.Component {
             break;
         }
         this.setState({errors, [name]: value});
-        
     }
 
     handleSubmit = event => {

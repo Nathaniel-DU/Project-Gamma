@@ -2,28 +2,23 @@ import React, { Fragment, Component } from "react";
 import StartLocationButton from "../../components/StartLocationButton";
 import UpdateView from "../UpdateView";
 import Hamburger from '../../components/Hamburger';
-import Header from '../../components/Header';
 import './style.css';
 import axios from 'axios';
 
 export default class StartLocation extends Component {
-
   constructor() {
     super()
-
     this.state = {
       latitude: '',
       longitude: '',
       eventStarted: false
     }
-
     this.getMyLocation = this.getMyLocation.bind(this);
     this.startTrip = this.startTrip.bind(this);
   }
 
   getMyLocation() {
     const location = window.navigator && window.navigator.geolocation
-
     if (location) {
       location.getCurrentPosition((position) => {
         this.setState({
@@ -46,7 +41,6 @@ export default class StartLocation extends Component {
   }
 
   render() {
-
     return (
       <div id="outer-container">
         <Hamburger />

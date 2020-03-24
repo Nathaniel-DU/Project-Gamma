@@ -42,8 +42,6 @@ app.use(flash());
 app.use(express.json());
 app.disable('etag');
 
-
-
 //Routes
 const authRouter = require(`./routes/api/authRouter`);
 const eventRouter = require(`./routes/api/eventRouter`);

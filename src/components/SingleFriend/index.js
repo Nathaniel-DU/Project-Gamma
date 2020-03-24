@@ -7,10 +7,7 @@ export default ({name, location, userId}) => {
             <b><DeleteFriend userId={userId}/>{name} </b> 
             <br/>
             {location}
-            
-            
             <hr/>
         </div>
-        
     )
 }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './style.css';
 
@@ -9,11 +8,11 @@ export default class Logout extends Component {
         axios.put(`/event/stop`)
             .then(() => {
                 axios.get('/auth/logout')
-                    .then(res => {
-                        if(res.status === 200){
-                            window.location.replace('/');
-                        }
-                    });
+                .then(res => {
+                    if(res.status === 200){
+                        window.location.replace('/');
+                    }
+                });
             });
     }
     

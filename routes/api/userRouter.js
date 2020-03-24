@@ -168,11 +168,7 @@ userRouter.route(`/profile`)
                     res.status(404).send();
                 }
             });
-    })
-
-
-
+    });
 userRouter.use(`/:userid/friends`, friendRouter);
 
 module.exports = userRouter;
-
