@@ -1,19 +1,15 @@
-
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import "./style.css";
-//import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
 class LoginPage extends Component {
   render() {
     return (
       <Register/>
-      
     );
   }
 }
-
 
 class Register extends Component {
   constructor(props) {
@@ -51,8 +47,6 @@ class Register extends Component {
         })
     }
 
-
-
   render() {
     return (
       <div id="outer-container">
@@ -79,7 +73,5 @@ class Register extends Component {
     );
   }
 }
-          
-          
-                 
-    export default LoginPage;
+        
+export default LoginPage;

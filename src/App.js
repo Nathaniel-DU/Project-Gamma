@@ -11,18 +11,12 @@ import EditProfile from "./views/EditProfile";
 import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import ResetPassword from './views/ResetPassword';
 import RequestReset from './views/RequestReset';
-
-
-// styles
 import "./App.css";
-
-// fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
  
 initFontAwesome();
 
 const App = () => {
-
   return (
     <Router history={history}>
       <div id="app" className="d-flex flex-column h-100">

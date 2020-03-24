@@ -1,57 +1,54 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStopCircle, faMapMarkedAlt, faPhoneVolume, faCar, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
-import StartLocation from "../../views/StartLocation";
-import StartLocationButton from '../StartLocationButton';
 import axios from 'axios';
 
 class ModalPage extends Component {
   
-state = {
-  modal1: false,
-  modal2: false,
-  modal3: false,
-  modal4: false
-}
+  state = {
+    modal1: false,
+    modal2: false,
+    modal3: false,
+    modal4: false
+  }
 
-toggle = nr => () => {
-  let modalNumber = 'modal' + nr;
-  switch(modalNumber){
-    case 'modal1':
-      this.getMyLocation();
-      axios.get('/event/excuse')
-        .catch(err => console.log(err));
-      break;
-    case 'modal2': 
+  toggle = nr => () => {
+    let modalNumber = 'modal' + nr;
+    switch(modalNumber){
+      case 'modal1':
         this.getMyLocation();
-        axios.get('/event/ride')
+        axios.get('/event/excuse')
+          .catch(err => console.log(err));
+        break;
+      case 'modal2': 
+          this.getMyLocation();
+          axios.get('/event/ride')
+          .catch(err => console.log(err));
+          break;
+      case 'modal3':
+        this.getMyLocation();
+        axios.get('/event/emergency')
         .catch(err => console.log(err));
         break;
-    case 'modal3':
+      case 'modal4': 
       this.getMyLocation();
-      axios.get('/event/emergency')
-      .catch(err => console.log(err));
       break;
-    case 'modal4': 
-    this.getMyLocation();
-    break;
-    default:
-      break;
+      default:
+        break;
+    }
+    this.setState({
+      [modalNumber]: !this.state[modalNumber]
+    });
   }
-  this.setState({
-    [modalNumber]: !this.state[modalNumber]
-  });
-}
 
-toggleOff = nr => () => {
-  let modalNumber = 'modal' + nr;
-  this.setState({
-    [modalNumber]: !this.state[modalNumber]
-  });
-}
+  toggleOff = nr => () => {
+    let modalNumber = 'modal' + nr;
+    this.setState({
+      [modalNumber]: !this.state[modalNumber]
+    });
+  }
 
   constructor() {
     super()
@@ -87,7 +84,6 @@ toggleOff = nr => () => {
       });
       
     }
-    
   }
 
   startTrip() {
@@ -99,8 +95,8 @@ toggleOff = nr => () => {
     window.location.reload();
   }
 
-render() {
-  return (
+  render() {
+    return (
       <MDBContainer>
         <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.stopTrip}><FontAwesomeIcon className="fa-icon" icon={faStopCircle} />Stop Trip</MDBBtn>
         <MDBBtn className="modal-btn mint-button" color="primary" onClick={this.toggle(1)}><FontAwesomeIcon className="fa-icon" icon={faPhoneVolume} />Excuse Call</MDBBtn>

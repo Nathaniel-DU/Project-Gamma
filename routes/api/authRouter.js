@@ -138,4 +138,3 @@ authRouter.route(`/reset/:resetid`)
     });
 
 module.exports = authRouter;
-

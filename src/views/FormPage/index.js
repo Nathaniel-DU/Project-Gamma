@@ -1,8 +1,6 @@
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import "./style.css"
-
 
 class FormPage extends Component {
   render() {
@@ -12,8 +10,10 @@ class FormPage extends Component {
     );
   }
 }
+
 const validPhoneRegex = RegExp(/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/i)
 const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
+
 const validateForm = (errors) => {
   let valid = true;
   Object.values(errors).forEach(
@@ -108,52 +108,49 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <div id="outer-container">
-     
       <h1>StaySafe</h1>
-      <div className='wrapper'>
-      <div className='form-wrapper'>
-        <h2>Sign Up</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div className='firstName'>
-            <label htmlFor="firstName">First Name</label>
-            <input type='text' name='firstName' onChange={this.handleChange} />
-            {errors.firstName.length > 0 &&
-              <span className='error'>{errors.firstName}</span>}
-              <br/>
-            <label htmlFor="lastName">Last Name</label>
-            <input type='text' name='lastName' onChange={this.handleChange} />
-            {errors.lastName.length > 0 &&
-              <span className='error'>{errors.lastName}</span>}
-              <br/>
-            <label htmlFor="email">Email</label>
-            <input type='email' name='email' onChange={this.handleChange} />
-            {errors.email.length > 0 &&
-              <span className='error'>{errors.email}</span>}
-              <br/>
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
-            {errors.phoneNumber.length > 0 &&
-              <span className='error'>{errors.phoneNumber}</span>}
-              <br/>
-            <label htmlFor="password">Password</label>
-            <br/>
-            <input type='password' name='password' onChange={this.handleChange} />
-            {errors.password.length > 0 &&
-              <span className='error'>{errors.password}</span>}
-              <br/>
-            <small>Password must be at least eight characters in length.</small>
-            <button className="sign-up-button">Sign Up</button>
-            <br/>
-            <span className='error'>{errors.form}</span>
+        <div className='wrapper'>
+          <div className='form-wrapper'>
+            <h2>Sign Up</h2>
+            <form onSubmit={this.handleSubmit}>
+              <div className='firstName'>
+                <label htmlFor="firstName">First Name</label>
+                <input type='text' name='firstName' onChange={this.handleChange} />
+                {errors.firstName.length > 0 &&
+                  <span className='error'>{errors.firstName}</span>}
+                  <br/>
+                <label htmlFor="lastName">Last Name</label>
+                <input type='text' name='lastName' onChange={this.handleChange} />
+                {errors.lastName.length > 0 &&
+                  <span className='error'>{errors.lastName}</span>}
+                  <br/>
+                <label htmlFor="email">Email</label>
+                <input type='email' name='email' onChange={this.handleChange} />
+                {errors.email.length > 0 &&
+                  <span className='error'>{errors.email}</span>}
+                  <br/>
+                <label htmlFor="phoneNumber">Phone Number</label>
+                <input type='phoneNumber' name='phoneNumber' onChange={this.handleChange} />
+                {errors.phoneNumber.length > 0 &&
+                  <span className='error'>{errors.phoneNumber}</span>}
+                  <br/>
+                <label htmlFor="password">Password</label>
+                <br/>
+                <input type='password' name='password' onChange={this.handleChange} />
+                {errors.password.length > 0 &&
+                  <span className='error'>{errors.password}</span>}
+                  <br/>
+                <small>Password must be at least eight characters in length.</small>
+                <button className="sign-up-button">Sign Up</button>
+                <br/>
+                <span className='error'>{errors.form}</span>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-</div>
-  );
+    );
+  }
 }
-}
-
-
 
 export default FormPage;

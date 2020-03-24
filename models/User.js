@@ -55,7 +55,6 @@ const UserSchema = new Schema({
         }
     ],
 
-
     phoneNumber: {
         type: String,
         required: true,
@@ -88,7 +87,6 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
-
 });
 
 UserSchema.pre(`save`, function(next) {
@@ -107,8 +105,6 @@ UserSchema.pre(`save`, function(next) {
 UserSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
-
-
 
 const User = mongoose.model('User', UserSchema);
 
