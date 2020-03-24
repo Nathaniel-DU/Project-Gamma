@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "./style.css"
-//import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+
 
 class FormPage extends Component {
   render() {
