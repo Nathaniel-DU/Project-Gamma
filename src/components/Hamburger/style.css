@@ -9,13 +9,8 @@
   
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #000000;
-    height: 100%;
-  }
-  
-  /* Color/shape of burger icon bars on hover*/
-  .bm-burger-bars-hover {
     background: #ADEFD1FF;
+    height: 100%;
   }
   
   /* Position and sizing of clickable cross button */
@@ -46,15 +41,10 @@
     overflow: hidden;
   }
   
-  /* Morph shape necessary with bubble or elastic */
-  /* .bm-morph-shape {
-    fill: #00203FFF;
-  } */
   
   /* Wrapper for item list */
   .bm-item-list {
     color: #000000;
-    /* padding: 0.8em; */
   }
   
   /* Individual item */

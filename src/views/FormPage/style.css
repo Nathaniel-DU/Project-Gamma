@@ -5,21 +5,7 @@ p,label {
 .signUpbttn{
     background-color: #ADEFD1FF;
 }
-p, div {
-    font-family: Lato;
-  }
   
-  /* 
-    Colors:
-    https://coolors.co/22223b-4a4e69-eadae4-9a8c98-c9ada7 
-  */
-  /*
-  YANKEES BLUE: #22223B
-  INDEPENDENCE: #4A4E69
-  PLATINUM: #EADAE4
-  SPANISH GRAY: #9A8C98
-  SILVER PINK: #C9ADA7
-  */
   
   .wrapper {
     height: 97vh;
@@ -47,7 +33,6 @@ p, div {
   .form-wrapper > h2 {
     display: flex;
     justify-content: center;
-    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 2em;
     font-weight: lighter;
     margin-top: 0.25em;
@@ -99,11 +84,6 @@ p, div {
     
   }
    
-  button:hover {
-    background-color: #4A4E69;
-    color: #fefefe;
-  }  
-  
   .error {
     color:#db2269;
     font-size: 0.5em;
