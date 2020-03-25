@@ -6,7 +6,7 @@ const sgMail = require(`@sendgrid/mail`);
 sgMail.setApiKey(process.env.SENDGRID_API);
 
 userRouter.route(`/friends`)
-    .get((req, res, next) => {
+    .get((req, res) => {
         let finalFriendsList = [];
         if(req.user){
             db.User.findById(req.user._id)
@@ -23,14 +23,14 @@ userRouter.route(`/friends`)
                                             .then(locationList => {
                                                 const locationStr = locationList.locations[locationList.locations.length -1];
                                                 axios({
-                                                    "method": "GET",
-                                                    "url": "https://google-maps-geocoding.p.rapidapi.com/geocode/json",
+                                                    "method": `GET`,
+                                                    "url": `https://google-maps-geocoding.p.rapidapi.com/geocode/json`,
                                                     "headers":{
-                                                        "content-type":"application/octet-stream",
-                                                        "x-rapidapi-host":"google-maps-geocoding.p.rapidapi.com",
+                                                        "content-type":`application/octet-stream`,
+                                                        "x-rapidapi-host":`google-maps-geocoding.p.rapidapi.com`,
                                                         "x-rapidapi-key": process.env.REVERSE_GEOCODING_API_KEY
                                                     }, "params": {
-                                                        "language": "en",
+                                                        "language": `en`,
                                                         "latlng": locationStr
                                                     }
                                                 }).then((response) => {
@@ -40,7 +40,7 @@ userRouter.route(`/friends`)
                                                         res.status(200).json(finalFriendsList);
                                                     }
                                                 }).catch((err) => {
-                                                    console.log(err)
+                                                    console.log(err);
                                                 });
                                             })
                                             .catch(err => {
@@ -57,17 +57,17 @@ userRouter.route(`/friends`)
                                 .catch(err => {
                                     console.log(err);
                                     res.send(404).send();
-                                })
+                                });
                         });
                     }else{
                         res.status(200).json(finalFriendsList);
                     }
-                })
+                });
         }
     });
 
-userRouter.route('/friendinvite')
-    .post((req, res, next) => {
+userRouter.route(`/friendinvite`)
+    .post((req, res) => {
         if(req.user) {
             db.User.findOne({'email': req.body.email})
                 .then(user => {
@@ -78,81 +78,81 @@ userRouter.route('/friendinvite')
                                     friendsPending: user._id
                                 }
                             })
-                            .then(invitee => {
-                                if(invitee){
-                                    db.User.findByIdAndUpdate(user._id, {
-                                        $addToSet: {
-                                            friendsInvited: req.user._id
-                                        }
-                                    })
-                                    .then(invited => {
-                                        if(invited){
-                                            sgMail.send({
-                                                to: invited.email,
-                                                from: `info@bknutson.com`,
-                                                subject: `${invitee.firstName} ${invitee.lastName} has invited you to StaySafe`,
-                                                text: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`,
-                                                html: `Click this link to accept the friend request https://staysafeapp.herokuapp.com/user/${invited._id}/friends/accept/${invitee._id}`
-                                            });
-                                            res.status(200).send();
-                                        }
-                                    })
-                                    .catch(err => console.log(err))
-                                }
-                            })
-                            .catch(err => console.log(err))
-                            res.json('Invite Sent!');
+                                .then(invitee => {
+                                    if(invitee){
+                                        db.User.findByIdAndUpdate(user._id, {
+                                            $addToSet: {
+                                                friendsInvited: req.user._id
+                                            }
+                                        })
+                                            .then(invited => {
+                                                if(invited){
+                                                    sgMail.send({
+                                                        to: invited.email,
+                                                        from: `info@staysafe.best`,
+                                                        subject: `${invitee.firstName} ${invitee.lastName} has invited you to StaySafe`,
+                                                        text: `Click this link to accept the friend request https://staysafe.best/user/${invited._id}/friends/accept/${invitee._id}`,
+                                                        html: `Click this link to accept the friend request https://staysafe.best/user/${invited._id}/friends/accept/${invitee._id}`
+                                                    });
+                                                    res.status(200).send();
+                                                }
+                                            })
+                                            .catch(err => console.log(err));
+                                    }
+                                })
+                                .catch(err => console.log(err));
+                            res.json(`Invite Sent!`);
                         }else{
-                            res.json('Friend already invited');
+                            res.json(`Friend already invited`);
                         }
                     } else {
-                        res.json('User not found');
+                        res.json(`User not found`);
                     }
                 }); 
         }
     });
 
-    //Remove
+//Remove
 userRouter.route(`/remove/:friendid`)
-    .get((req, res, next) => {
+    .get((req, res) => {
         db.User.findByIdAndUpdate(req.user._id, {
             $pull: {
                 friendsList: req.params.friendid
             }
         })
-        .then(() => {
-            db.User.findByIdAndUpdate(req.params.friendid, {
-                $pull: {
-                    friendsList: req.user._id
-                }
-            })
             .then(() => {
-                res.status(200).send();
+                db.User.findByIdAndUpdate(req.params.friendid, {
+                    $pull: {
+                        friendsList: req.user._id
+                    }
+                })
+                    .then(() => {
+                        res.status(200).send();
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.status(404).send();
+                    });
             })
             .catch(err => {
                 console.log(err);
                 res.status(404).send();
-            });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(404).send();
 
-        });
+            });
     });
 
 userRouter.route(`/profile`)
-    .get((req, res, next) => {
+    .get((req, res) => {
         db.User.findById(req.user._id)
             .then(user => {
                 if(user){
-                    res.json({firstName: user.firstName, lastName: user.lastName, email: user.email, phoneNumber: user.phoneNumber})
+                    res.json({firstName: user.firstName, lastName: user.lastName, email: user.email, phoneNumber: user.phoneNumber});
                 }else{
                     res.status(404).send();
                 }
             });
     })
-    .put((req, res, next) => {
+    .put((req, res) => {
         db.User.findByIdAndUpdate(req.user._id, {
             $set: {
                 firstName: req.body.firstName,

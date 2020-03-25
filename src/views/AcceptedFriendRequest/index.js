@@ -15,6 +15,6 @@ export default class AcceptedFriendRequest extends Component {
                 <br/>
                 <h5>You may now close this window and return to your app.</h5>
             </Fragment>
-        )
+        );
     }
 }

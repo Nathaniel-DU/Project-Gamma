@@ -17,23 +17,23 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  return (
-    <Router history={history}>
-      <div id="app" className="d-flex flex-column h-100">
-        <Switch>
-          <UnauthenticatedRoute exact path="/" component={Home}/>
-          <UnauthenticatedRoute exact path="/auth/create" component={FormPage}/>
-          <ProtectedRoute path="/home" component={StartLocation} />
-          <UnauthenticatedRoute path="/auth/login" exact component={Login}/>
-          <Route path="/user/:userid/friends/accept/:friendid" component={AcceptedFriendRequest}/>
-          <UnauthenticatedRoute path="/auth/reset/:resetid" component={ResetPassword}/>
-          <UnauthenticatedRoute path="/auth/password-reset" component={RequestReset}/>
-          <ProtectedRoute path="/edit" exact component ={EditProfile} />
-          <Route path="*"><Redirect to="/"/></Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+    return (
+        <Router history={history}>
+            <div id="app" className="d-flex flex-column h-100">
+                <Switch>
+                    <UnauthenticatedRoute exact path="/" component={Home}/>
+                    <UnauthenticatedRoute exact path="/auth/create" component={FormPage}/>
+                    <ProtectedRoute path="/home" component={StartLocation} />
+                    <UnauthenticatedRoute path="/auth/login" exact component={Login}/>
+                    <Route path="/user/:userid/friends/accept/:friendid" component={AcceptedFriendRequest}/>
+                    <UnauthenticatedRoute path="/auth/reset/:resetid" component={ResetPassword}/>
+                    <UnauthenticatedRoute path="/auth/password-reset" component={RequestReset}/>
+                    <ProtectedRoute path="/edit" exact component ={EditProfile} />
+                    <Route path="*"><Redirect to="/"/></Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 };
 
 export default App;

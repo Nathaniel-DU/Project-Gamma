@@ -7,12 +7,12 @@ export default class Logout extends Component {
     logOut = () => {
         axios.put(`/event/stop`)
             .then(() => {
-                axios.get('/auth/logout')
-                .then(res => {
-                    if(res.status === 200){
-                        window.location.replace('/');
-                    }
-                });
+                axios.get(`/auth/logout`)
+                    .then(res => {
+                        if(res.status === 200){
+                            window.location.replace(`/`);
+                        }
+                    });
             });
     }
     
@@ -21,6 +21,6 @@ export default class Logout extends Component {
             <div>
                 <button className='blue-button' id='logout-button' onClick={this.logOut}>Logout</button>
             </div>
-        )
+        );
     }
 }

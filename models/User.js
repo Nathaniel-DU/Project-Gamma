@@ -8,18 +8,18 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+        match: [/.+@.+\..+/, `Please enter a valid e-mail address`]
     },
 
     password: {
         type: String,
         trim: true,
-        required: "Password is Required",
+        required: `Password is Required`,
         validate: [
-          function(input) {
-            return input.length >= 8;
-          },
-          "Password needs to be longer."
+            function(input) {
+                return input.length >= 8;
+            },
+            `Password needs to be longer.`
         ]
     },
 
@@ -30,35 +30,35 @@ const UserSchema = new Schema({
     friendsList: [
         {
             type: Schema.Types.ObjectId,
-            ref: "User",
+            ref: `User`,
         }
     ],
 
     friendsPending: [
         {
             type: Schema.Types.ObjectId,
-            ref: "User",
+            ref: `User`,
         }
     ],
 
     friendsInvited: [
         {
             type: Schema.Types.ObjectId,
-            ref: "User",
+            ref: `User`,
         }
     ],
 
     locations: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Location"
+            ref: `Location`
         }
     ],
 
     phoneNumber: {
         type: String,
         required: true,
-        match: [/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/, 'Please enter a valid phone number']
+        match: [/^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/, `Please enter a valid phone number`]
     },
 
     firstName: {
@@ -106,6 +106,6 @@ UserSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model(`User`, UserSchema);
 
 module.exports = User;

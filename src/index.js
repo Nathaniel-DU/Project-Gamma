@@ -5,18 +5,19 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import history from "./utils/history";
 
+// eslint-disable-next-line no-unused-vars
 const onRedirectCallback = appState => {
-  history.push(
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname
-  );
+    history.push(
+        appState && appState.targetUrl
+            ? appState.targetUrl
+            : window.location.pathname
+    );
 };
 
 ReactDOM.render(
 
     <App />,
-  document.getElementById("root")
+    document.getElementById(`root`)
 );
 
 // If you want your app to work offline and load faster, you can change

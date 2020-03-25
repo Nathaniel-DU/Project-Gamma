@@ -4,58 +4,58 @@ import axios from 'axios';
 import "./style.css";
 
 class RequestReset extends Component {
-  render() {
-    return <Register/>
-  }
+    render() {
+        return <Register/>;
+    }
 }
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: null,
-      resetMessage: null
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: null,
+            resetMessage: null
+        };
+    }
 
   handleChange = (event) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    this.setState({[name]: value});
+      event.preventDefault();
+      const { name, value } = event.target;
+      this.setState({[name]: value});
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
+      event.preventDefault();
       const user = {
-        email: this.state.email
-      }
-      axios.post('/auth/reset', user)
-        .then(res => {
-          if(res.data.message){
-            this.setState({resetMessage: res.data.message})
-          }
-        })
+          email: this.state.email
+      };
+      axios.post(`/auth/reset`, user)
+          .then(res => {
+              if(res.data.message){
+                  this.setState({resetMessage: res.data.message});
+              }
+          });
   }
 
   render() {
-    return (
-      <div id="outer-container">
-      <h1>StaySafe</h1>
-        <div className='wrapper'>
-          <div className='form-wrapper'>
-            <h2>Reset Password</h2>
-            <form onSubmit={this.handleSubmit}>
-              <div className='email'>
-                <label htmlFor="email">email</label>
-                <input type='email' name='email' onChange={this.handleChange} />
-                <button className="reset-btn">Request Reset</button>
-                <p id="reset-error">{this.state.resetMessage}</p>
+      return (
+          <div id="outer-container">
+              <h1>StaySafe</h1>
+              <div className='wrapper'>
+                  <div className='form-wrapper'>
+                      <h2>Reset Password</h2>
+                      <form onSubmit={this.handleSubmit}>
+                          <div className='email'>
+                              <label htmlFor="email">email</label>
+                              <input type='email' name='email' onChange={this.handleChange} />
+                              <button className="reset-btn">Request Reset</button>
+                              <p id="reset-error">{this.state.resetMessage}</p>
+                          </div>
+                      </form>
+                  </div>
               </div>
-            </form>
           </div>
-        </div>
-      </div>
-    );
+      );
   }
 }
           
