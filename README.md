@@ -32,7 +32,8 @@ Our app features a mobile first design, with a color scheme that's pleasing to l
 * Bootstrap
 * History
 * Helmet
-* Greenlock
+* Google Reverse Geocoder
+* Express-sslify
 * Morgan
 * Jest/Enzyme
 * FontAwesome
