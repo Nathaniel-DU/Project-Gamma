@@ -67,8 +67,8 @@ authRouter.route(`/reset`)
                         to: user.email,
                         from: `info@staysafe.best`,
                         subject: `StaySafe Password Reset`,
-                        text: `Hello ${user.firstName}, here is a link you can use to reset your password: https://staysafe.best/auth/${user.passwordResetLink}`,
-                        html: `Hello ${user.firstName}, here is a link you can use to reset your password: https://staysafe.best/auth/${user.passwordResetLink}`
+                        text: `Hello ${user.firstName}, here is a link you can use to reset your password: https://staysafe.best/auth/reset/${user.passwordResetLink}`,
+                        html: `Hello ${user.firstName}, here is a link you can use to reset your password: https://staysafe.best/auth/reset/${user.passwordResetLink}`
                     });
                     res.status(200).json({message: `If an account exists with this email, a password reset email has been sent`});
                 }else{

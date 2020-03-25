@@ -26,7 +26,7 @@ const App = () => {
                     <ProtectedRoute path="/home" component={StartLocation} />
                     <UnauthenticatedRoute path="/auth/login" exact component={Login}/>
                     <Route path="/user/:userid/friends/accept/:friendid" component={AcceptedFriendRequest}/>
-                    <UnauthenticatedRoute path="/auth/:resetid" component={ResetPassword}/>
+                    <UnauthenticatedRoute path="/auth/reset/:resetid" component={ResetPassword}/>
                     <UnauthenticatedRoute path="/auth/password-reset" component={RequestReset}/>
                     <ProtectedRoute path="/edit" exact component ={EditProfile} />
                     <Route path="*"><Redirect to="/"/></Route>
