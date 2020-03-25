@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteFriend from '../DeleteFriend';
 
-export default ({name, location, userId}) => {
+export default function SingleFriend ({name, location, userId}) {
     return (
         <div>
             <b><DeleteFriend userId={userId}/>{name} </b> 
@@ -9,5 +9,5 @@ export default ({name, location, userId}) => {
             {location}
             <hr/>
         </div>
-    )
+    );
 }

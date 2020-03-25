@@ -5,7 +5,7 @@ import SingleFriend from '../SingleFriend';
 export default class Friends extends Component {
     state = {
         friends: [],
-        intervalId: ''
+        intervalId: ``
     }
 
     componentDidMount() {
@@ -30,11 +30,11 @@ export default class Friends extends Component {
         if(this.state.friends.length > 0){
             return (
                 <div>
-                    {this.state.friends.map((friend, i) => <SingleFriend key={i + '-friendlist'} userId={friend.userId} name={friend.name} location={friend.location} />)}
+                    {this.state.friends.map((friend, i) => <SingleFriend key={i + `-friendlist`} userId={friend.userId} name={friend.name} location={friend.location} />)}
                 </div>
-            )
+            );
         }else{
-            return <div></div>
+            return <div></div>;
         }
     }
 }

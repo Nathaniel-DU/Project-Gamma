@@ -7,19 +7,19 @@ const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|
 const validateForm = (errors) => {
     let valid = true;
     Object.values(errors).forEach(
-      (val) => val.length > 0 && (valid = false)
+        (val) => val.length > 0 && (valid = false)
     );
     return valid;
-}
+};
 
 class FriendSearch extends React.Component {
 
     state = {
-        email: '',
+        email: ``,
         errors: {
-            email: ''
+            email: ``
         },
-        inviteRes: ''
+        inviteRes: ``
     }
 
     handleChange = event => {
@@ -28,13 +28,13 @@ class FriendSearch extends React.Component {
         let errors = this.state.errors;
 
         switch (name) {
-            case 'email': 
-              errors.email = 
+        case `email`: 
+            errors.email = 
                 validEmailRegex.test(value)
-                  ? ''
-                  : 'Email is not valid!';
-              break;
-              default:
+                    ? ``
+                    : `Email is not valid!`;
+            break;
+        default:
             break;
         }
         this.setState({errors, [name]: value});
@@ -43,35 +43,35 @@ class FriendSearch extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         if(validateForm(this.state.errors)) {
-        const friend = {
-            email: this.state.email.toLowerCase(),
-        }
-        axios.post(`/user/friendinvite`, friend)
-        .then(res => {
-            this.setState({inviteRes: res.data});
-        });
-        console.info('Valid Search')
+            const friend = {
+                email: this.state.email.toLowerCase(),
+            };
+            axios.post(`/user/friendinvite`, friend)
+                .then(res => {
+                    this.setState({inviteRes: res.data});
+                });
+            console.info(`Valid Search`);
         }else{
-        console.error('Invalid Search')
+            console.error(`Invalid Search`);
         }
         event.target.reset();
     }
   
     render () {
-      return (
-        <div>
-            <form onSubmit={this.handleSubmit}>
-                <h4>Add Friend:</h4>
-                <label htmlFor="search-friend"></label>
-                <input id='search-friend' name='email' type="text" placeholder="Enter email" onChange={this.handleChange}/>
-                {this.state.errors.email.length > 0 && 
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <h4>Add Friend:</h4>
+                    <label htmlFor="search-friend"></label>
+                    <input id='search-friend' name='email' type="text" placeholder="Enter email" onChange={this.handleChange}/>
+                    {this.state.errors.email.length > 0 && 
                 <span className='error'>{this.state.errors.email}</span>}
-                {this.state.inviteRes.length > 0 && 
+                    {this.state.inviteRes.length > 0 && 
                 <span className='error'>{this.state.inviteRes}</span>}
-                <button className='blue-button' type='submit'>Invite</button>
-            </form>
-        </div>
-      );
+                    <button className='blue-button' type='submit'>Invite</button>
+                </form>
+            </div>
+        );
     }
 }
   

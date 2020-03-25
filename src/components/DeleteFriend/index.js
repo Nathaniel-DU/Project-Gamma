@@ -7,23 +7,23 @@ import axios from 'axios';
 
 export default class DeleteFriend extends Component {
 
-    deleteUser = () => {
-        axios.get(`/user/remove/${this.props.userId}`)
-    }
-
     state = {
         modal1: false
     }
 
+    deleteUser = () => {
+        axios.get(`/user/remove/${this.props.userId}`);
+    }
+
     toggle = nr => () => {
-        let modalNumber = 'modal' + nr
+        let modalNumber = `modal` + nr;
         this.setState({
             [modalNumber]: !this.state[modalNumber]
         });
     }
 
     toggleOff = nr => () => {
-        let modalNumber = 'modal' + nr;
+        let modalNumber = `modal` + nr;
         this.setState({
             [modalNumber]: !this.state[modalNumber]
         });
@@ -37,7 +37,7 @@ export default class DeleteFriend extends Component {
                 <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} centered>
                     <MDBModalHeader className="modal-header" toggle={this.toggle(1)}>Confirm Deletion</MDBModalHeader>
                     <MDBModalBody className="modal-body">
-                        Are you sure you want to remove this friend from your friend's list?
+                        Are you sure you want to remove this friend from your friend&apos;s list?
                     </MDBModalBody>
                     <MDBModalFooter>
                         <MDBBtn className="close-mdl" onClick={this.toggle(1)}>Cancel</MDBBtn>
@@ -45,6 +45,6 @@ export default class DeleteFriend extends Component {
                     </MDBModalFooter>
                 </MDBModal>
             </MDBContainer>
-        )
+        );
     }
 }
