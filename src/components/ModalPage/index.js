@@ -74,6 +74,7 @@ class ModalPage extends Component {
                   latitude: position.coords.latitude,
                   longitude: position.coords.longitude,
               });
+              
               axios.put(`/event/updatelocation`, {
                   lat: this.state.latitude,
                   long: this.state.longitude,
@@ -85,6 +86,7 @@ class ModalPage extends Component {
       
       }
   }
+ 
 
   startTrip() {
       this.setState({ eventStarted: true });
