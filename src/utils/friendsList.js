@@ -1,9 +1,6 @@
 const axios = require(`axios`);
-
-function friendsList() {
-    return new Promise((resolve) => resolve(axios.get(`/user/friends`).then(res => res.data)));
+async function friendsList() {
+    const result = await axios.get(`/user/friends`).then((res) => res.data);
+    return result;
 }
-
 export default friendsList;
-
-
